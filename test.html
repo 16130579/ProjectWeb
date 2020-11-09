@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+		
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			b {
+	color: white;
+}
+
+.modal-header, h4, .close {
+	background-color: #5cb85c;
+	color: white !important;
+	text-align: center;
+	font-size: 30px;
+}
+
+.modal-footer {
+	background-color: #f9f9f9;
+}
+
+.circle {
+	width: 17px;
+	height: 17px;
+	line-height: 17px;
+	border-radius: 50%; /* the magic */
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	text-align: center;
+	color: white;
+	font-size: 9px;
+	text-transform: uppercase;
+	font-weight: 700;
+	padding: 0;
+	margin: 0;
+}
+
+.red {
+	background-color: #e74c3c;
+}
+
+.bell.dropdown-toggle::after {
+	content: none;
+}
+.drop{
+        	color: black;
+        	padding:  5px;
+        }
+        .drop:hover{
+        	text-decoration: none;
+        	background: #E3F2FD;
+        	color: black;
+
+        }
+       .item:hover{
+       	text-decoration: none;
+       }
+        .bella.dropdown-menu{
+        	max-height:200px;
+          overflow-y:auto;
+        }
+		</style>
+</head>
+<body>
+	<a  class="btn btn-success my-2 my-sm-0 mr-4"
+					id="myBtn">
+
+					<i class="fas fa-user" style="color: white;"></i> <b>Đăng nhập</b>
+
+				</a>
+	<!-- Form Đăng Nhập -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="padding: 20px 35px;">
+					<h4>
+						<span class="glyphicon glyphicon-lock"></span>Đăng nhập
+					</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body" style="padding: 20px 25px;">
+					<form action="DangNhapServlet" method="POST" role="form">
+						<div class="form-group">
+							<label for="usrname"><span
+								class="glyphicon glyphicon-user"></span>Tên đăng nhập</label> <input
+								type="text" name="tenDangNhap" class="form-control" id="usrname"
+								placeholder="Nhập tên đăng nhập" value="phong123">
+						</div>
+						<div class="form-group">
+							<label for="psw"><span
+								class="glyphicon glyphicon-eye-open"></span>Mật khẩu</label> <input
+								type="password" name="matKhau" class="form-control" id="psw"
+								placeholder="Nhập mật khẩu" value="thokt">
+						</div>
+						<div class="checkbox">
+							<label><input type="checkbox" value=""> Nhớ đăng
+								nhập</label>
+						</div>
+						<button type="submit" class="btn btn-success btn-block">
+							<span class="glyphicon glyphicon-off"></span> Đăng nhập
+						</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<p>
+						Chưa có tài khoản?
+						<button type="button" class="btn btn-danger" id="myBtn2">Đăng
+							ký</button>
+					</p>
+					<p>
+						<button type="button" class="btn btn-info" id="myBtnF">Quên
+							mật khẩu</button>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Form Đăng Ký -->
+	<div class="modal fade" id="myModalsignup" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="padding: 20px 35px;">
+					<h4>
+						<span class="glyphicon glyphicon-lock"></span>Đăng ký
+					</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body" style="padding: 20px 25px;">
+					<form action="DangKyServlet" method="POST" role="form">
+						<div class="form-group">
+							<input type="text" class="form-control" id="usrname"
+								name="tendangnhap" placeholder="Tên đăng nhập">
+						</div>
+						<div class="form-group">
+
+							<input type="password" class="form-control" id="psw"
+								name="matkhau" placeholder="Mật khẩu">
+						</div>
+						<div class="form-group">
+
+							<input type="password" class="form-control" id="rpsw"
+								name="nhaplaimatkhau" placeholder="Nhập lại mật khẩu">
+						</div>
+						<div class="form-group">
+
+							<input type="text" class="form-control" id="usrname"
+								name="hovaten" placeholder="Họ và tên">
+						</div>
+						<div class="form-group">
+
+							<input type="email" class="form-control" id="email" name="email"
+								placeholder="Email">
+						</div>
+						<div class="form-group">
+
+							<input type="text" class="form-control" id="usrname"
+								name="sodienthoai" placeholder="Số điện thoại">
+						</div>
+						<div class="form-group">
+
+							<input type="text" class="form-control" id="usrname"
+								name="diachi" placeholder="Địa chỉ">
+						</div>
+
+						<button type="submit" class="btn btn-danger btn-block">
+							<span class="glyphicon glyphicon-off"></span> Đăng ký
+						</button>
+					</form>
+				</div>
+				<div class="modal-footer" style="margin-top: -10px;">
+					<p>
+						Đã có tài khoản?
+						<button type="button" class="btn btn-success" id="myBtnA">Đăng
+							nhập</button>
+					</p>
+					<p>
+						<button type="button" class="btn btn-info" id="myBtnFF">Quên
+							mật khẩu</button>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- Form Quên Mật Khẩu -->
+	<div class="modal fade" id="myModalpass" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="padding: 20px 35px;">
+					<h4>
+						<span class="glyphicon glyphicon-lock"></span>Quên mật khẩu
+					</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body" style="padding: 20px 25px;">
+					<form role="form" action="ForgotPasswordServlet" method="post">
+						<div class="form-group">
+							<label for="usrname"><span
+								class="glyphicon glyphicon-user"></span>Email</label> <input
+								type="email" class="form-control" id="usrname" name="inputEmail"
+								placeholder="Nhập địa chỉ email đã đăng ký để nhận lại mật khẩu">
+							<button type="submit" class="btn btn-info btn-block"
+								style="margin-top: 10px;">Lấy lại mật khẩu</button>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<p>
+						Chưa có tài khoản?
+						<button type="button" class="btn btn-danger" id="myBtnC">Đăng
+							ký</button>
+					</p>
+					<p>
+						Đã có tài khoản?
+						<button type="button" class="btn btn-success" id="myBtnD">Đăng
+							nhập</button>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Huong dan -->
+	<div class="modal fade" id="myModalH" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header" style="padding: 20px 35px;">
+					<h4>
+						<span class="glyphicon glyphicon-lock"></span>Hướng dẫn
+					</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body" style="padding: 20px 25px;">
+					<h4>
+						<b>HƯỚNG DẪN SỬ DỤNG</b>
+					</h4>
+					<p style="font-weight: bold;">Chào mừng bạn đến với thế giới
+						của web Đấu Giá Trực Tuyến, chúng tôi luôn chào đón bạn. Chúng tôi gửi đến
+						bạn hướng dẫn về đấu giá và những thông tin cần thiết.</p>
+					<p>Khi bạn đã đăng nhập vào tài khoản của mình, bạn có thể đấu
+						giá cho bất kỳ mặt hàng nào bằng cách đơn giản là nhập một giá
+						thầu mà bạn sẵn sàng trả cho món hàng mà bạn cần.</p>
+					<p>Chúng tôi đã thiết kế một phiên đấu giá đơn giản để bạn có
+						thể dễ dàng sử dụng. Nhưng xin lưu ý rằng giá thầu tối thiểu được
+						tự động liệt kê trong hệ thống đấu giá. Giá thầu của bạn ít nhất
+						phải khớp với giá được liệt kê tối thiểu.</p>
+					<p>Bạn luôn có thể đặt giá thầu cao hơn nếu bạn sẵn sàng trả
+						nhiều hơn cho mặt hàng bạn muốn mua nhưng với giá phải cao hơn mức
+						giá mỗi lượt phát sinh do chúng tôi cung cấp.</p>
+					<p>Khi bạn đấu giá thầu cao hơn giá thầu tối thiểu hệ thống sẽ
+						tự động đặt giá thầu của bạn lên trên giá thầu cao nhất hiện tại
+						trên màn hình và nếu có một người khác trả giá cao hơn chúng tôi
+						cũng sẽ hiển thi để bạn có thể theo dõi.</p>
+					<p>Hệ thống của chúng tôi được thiết kể để tiết kiệm tiền cho
+						bạn và cho bạn cơ hội tốt nhất để giành chiến thắng trong cuộc bán
+						đấu giá ở mức giá thấp nhất có thể.</p>
+					<p style="font-weight: bold;">Xin lưu ý rằng chúng tôi có mức
+						giá trần, đây là mức giá mà người bán mong muốn, khi bạn đặt giá
+						bằng với giá trần, bạn sẽ là người chiến thắng và phiên đấu giá
+						kết thúc.</p>
+					<p>Bạn cũng có thể đấu giá nhiều sản phẩm cùng lúc, với mỗi sản
+						phẩm nếu bạn là người dẫn đầu chúng tôi sẽ tạm trừ tiền trong tài
+						khoản của bạn, bạn cũng có thể nạp thêm tiền vào tài khoản để tiếp
+						tục đấu giá những sản phẩm khác và sẽ hoàn lại khi bạn không là
+						người dẫn đầu sản phẩm đó nữa. Sau khi phiên đấu giá kết thúc và
+						bạn là người chiến thắng chúng tôi sẽ trừ ngay số tiền mà bạn đã
+						đặt. Như vậy chúng tôi sẽ đảm bảo rằng bạn chắc chắn mua sản phẩm,
+						sau đó hệ thống sẽ lấy thông tin của bạn và chuyển hàng đến bạn
+						thông qua các đơn vị vận chuyển.</p>
+					<p style="font-weight: bold;">Xin hãy lưu ý, đối với mỗi lần
+						thắng phiên đấu giá thì bạn không thể hủy đơn hàng, nên bạn hãy
+						cân nhắc trước khi đặt hàng.</p>
+					<p style="font-weight: bold;">Sau đây là một ví dụ :</p>
+					<p>Người dùng khác (gọi là Người dùng 1) đặt giá thầu 200.000
+						₫. Với mức giá tối thiểu tăng lên là 10.000₫ .Bạn đã đặt với giá
+						210.000₫( hoặc có thể hơn) Như vậy bạn là người tạm dẫn đầu, chúng
+						tôi sẽ hiển thị người dẫn đầu sản phẩm là bạn và tài khoản của bạn
+						sẽ bị tạm trừ đi 210.000₫.</p>
+					<p>Người dùng 1 đặt giá thầu 250.000 ₫, vậy hệ thống người tạm
+						dẫn đầu là người dùng 1 và số tiền tạm trừ của bạn được trả về tài
+						khoản của bạn. Nếu trước khi thời gian của phiên đấu giá kết thúc
+						mà bạn vẫn không đặt tiếp tục thì người chiến thắng sẽ là người
+						dùng 1.</p>
+					<p style="font-weight: bold;">Cách khác :</p>
+					<p>Nếu bạn vẫn tiếp tục đặt với mức giá 260.000₫ ( hoặc có thể
+						hơn), chúng tôi sẽ tiếp tục tạm trừ số tiền này trong tài khoản
+						của bạn. Nếu đã hết thời hạn để tiếp tục phiên đấu giá và bạn là
+						người chiến thắng thì số tiền chúng tôi đã tạm trừ thì sẽ không
+						hoàn lại và chúng tôi sẽ yêu cầu bạn cập nhật thông tin để nhận
+						hàng.</p>
+					<p style="font-weight: bold;">Một ví dụ về giá trần:</p>
+					<p>Người dùng khác (gọi là Người dùng 1) đặt giá thầu 200.000
+						₫. Bạn đặt một giá 300.000 ₫ ( đây là mức giá trần ). Bạn là người
+						chiến thắng, phiên đấu giá sẽ kết thúc và chúng tôi sẽ trừ tiền
+						300.000 ₫ trong tài khoản của bạn ngay lập tức. Chúng tôi sẽ yêu
+						cầu bạn cập nhật thông tin để nhận hàng.</p>
+					<p>Chúng tôi cũng sẽ hỗ trợ khi bạn nào cần đăng bán sản phẩm
+						của mình nếu bạn có tài khoản trên web đấu giá. Bạn chỉ cần nhập
+						đầy đủ thông tin mà chúng tôi yêu cầu cho sản phẩm mà bạn muốn
+						đăng bán. Khi có khách hàng đấu giá thắng sản phẩm của bạn, thông
+						tin của khách hàng sẽ được gửi cho bạn và bạn sẽ phải chuyển hàng
+						cho khách và cung cấp cho chúng tôi mã vận đơn. Như vậy chúng tôi
+						mới có thể chuyển tiền hàng cho bạn khi đơn hàng được giao thành
+						công.</p>
+					<p>Khi bạn đến với chúng tôi, chúng tôi sẽ cung cấp những gì
+						cần thiết nhất cho bạn và mang lại cho bạn những trải nghiệm thú
+						vị nhất.</p>
+					<p style="text-align: center; font-weight: bold;">Chúc bạn có
+						một ngày mới vui vẻ và thành công.</p>
+					<p></p>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function() {
+			$("#myBtn").click(function() {
+				$("#myModal").modal("show");
+				$("#myModalsignup").modal("hide");
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#myBtn2").click(function() {
+				$("#myModalsignup").modal("show");
+				$("#myModal").modal("hide");
+			});
+		});
+	
+	
+		$(document).ready(function() {
+			$("#myBtnA").click(function() {
+				$("#myModal").modal("show");
+				$("#myModalsignup").modal("hide");
+			});
+		});
+	
+	
+		$(document).ready(function() {
+			$("#myBtnB").click(function() {
+				$("#myModalpass").modal("show");
+				$("#myModalsignup").modal("hide");
+				$("#myModal").modal("hide");
+			});
+		});
+	
+	
+		$(document).ready(function() {
+			$("#myBtnC").click(function() {
+				$("#myModalpass").modal("hide");
+				$("#myModalsignup").modal("show");
+				$("#myModal").modal("hide");
+			});
+		});
+	
+	
+		$(document).ready(function() {
+			$("#myBtnD").click(function() {
+				$("#myModalpass").modal("hide");
+				$("#myModalsignup").modal("hide");
+				$("#myModal").modal("show");
+			});
+		});
+	
+	
+		$(document).ready(function() {
+			$("#myBtnFF").click(function() {
+				$("#myModalpass").modal("show");
+				$("#myModalsignup").modal("hide");
+				$("#myModal").modal("hide");
+			});
+		});
+	
+
+	
+		$(document).ready(function() {
+			$("#myBtnF").click(function() {
+				$("#myModalpass").modal("show");
+				$("#myModalsignup").modal("hide");
+				$("#myModal").modal("hide");
+			});
+		});
+	
+	
+		$(document).ready(function() {
+			$("#myBtnH").click(function() {
+				$("#myModalH").modal("show");
+			});
+		});
+	</script>
+</body>
+</html>
