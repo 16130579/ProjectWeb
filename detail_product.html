@@ -6,6 +6,8 @@
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
         <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.css">
         <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/css_dangNhap.css">
+        <link rel="stylesheet" href="css/css_dangky.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
         <style type="text/css">
             .dropbtn {
@@ -44,6 +46,92 @@
         .dropdown:hover .dropbtn {
         background-color: #4267B2;
         }
+        /* The Modal (background) */
+        .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 1%; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        /* Modal Content */
+        .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 80%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+        }
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+        }
+        @keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+        }
+        /* The Close Button */
+        .close1 {
+        color: black;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        top: 3px;
+        right: 20px;
+        }
+        .close1:hover,
+        .close1:focus {
+        color: red;
+        text-decoration: none;
+        cursor: pointer;
+        }
+       
+        .modal-body {padding: 2px 16px;}
+        
+        .close2 {
+        color: black;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        top: 3px;
+        right: 20px;
+        }
+        .close2:hover,
+        .close2:focus {
+        color: red;
+        text-decoration: none;
+        cursor: pointer;
+        }
+        .close3 {
+        color: black;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        top: 3px;
+        right: 20px;
+        }
+        .close3:hover,
+        .close3:focus {
+        color: red;
+        text-decoration: none;
+        cursor: pointer;
+        }
         </style>
     </head>
     <body>
@@ -75,16 +163,137 @@
                         <div class="dropdown">
                 <button class="dropbtn"><i class="fas fa-user" style="color: white"></i>&nbsp;<b>Đăng nhập</b></button>
                 <div class="dropdown-content">
-                    <a id="myBtn">Đăng nhập</a>
-                    <a href="#">Đăng ký</a>
-                </div>
+                                <a id="btnlogin">Đăng nhập</a>
+                                <a id="btnregister">Đăng ký</a>
+                            </div>
+                            <!-- The Modal -->
+                            <div id="modalLogin" class="modal">
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    
+                                    
+                                    <div class="modal-body" style="color: black;">
+                                       
+                                        <div class="row">
+                                            <div class="col-lg-6 d-none d-lg-block bg-login-image">
+                                                <img src="img/dangNhap.jpg">
+                                                
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="p-5">
+                                                    <div class="text-center">
+                                                        <span class="close1">&times;</span>
+                                                        <h1 class="h4 text-gray-900 mb-4">Đăng nhập</h1>
+
+
+                                                    </div>
+                                                    <form class="user">
+                                                        <div class="form-group">
+                                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Nhập địa chỉ Email...">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Nhập mật khẩu">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="custom-control custom-checkbox small">
+                                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                                <label class="custom-control-label" for="customCheck">Lưu đăng nhập</label>
+                                                            </div>
+                                                        </div>
+                                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                                            Đăng nhập
+                                                        </a>
+                                                        <hr>
+                                                        <a href="index.html" class="btn btn-google btn-user btn-block">
+                                                            <i class="fab fa-google fa-fw"></i> Đăng nhập bằng Google
+                                                        </a>
+                                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                                            <i class="fab fa-facebook-f fa-fw"></i> Đăng nhập bằng Facebook
+                                                        </a>
+                                                    </form>
+                                                    <hr>
+                                                    <div class="text-center">
+                                                        <a class="small" href="forgot-password.html">Quên mật khẩu?</a>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <a class="small" href="register.html">Tạo tài khoản!</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div id="modalRegister" class="modal">
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    
+                                    <div class="modal-body" style="color: black;">
+
+                                        <div class="row">
+                                            <div class="col-lg-5 d-none d-lg-block bg-register-image">
+                                                <img src="img/dangky.jpg">
+                                            </div>
+                                            <div class="col-lg-7">
+                                                <div class="p-5">
+                                                    <div class="text-center">
+                                                        <span class="close2">&times;</span>
+                                                        <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                                    </div>
+                                                    <form class="user">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                                                            </div>
+                                                        </div>
+                                                        <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                                            Register Account
+                                                        </a>
+                                                        <hr>
+                                                        <a href="index.html" class="btn btn-google btn-user btn-block">
+                                                            <i class="fab fa-google fa-fw"></i> Register with Google
+                                                        </a>
+                                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                                            <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                                        </a>
+                                                    </form>
+                                                    <hr>
+                                                    <div class="text-center">
+                                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <a class="small" href="login.html">Already have an account? Login!</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
             </div>
                     </div>
-                    <div class="box-item-cart">
+                    <a href="gioHang.html"><div class="box-item-cart">
                         <div class="box-item-cart-contain">
                             <i class="fas fa-shopping-cart"></i> Giỏ hàng <span class="numberItem">0</span>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -93,32 +302,32 @@
                 <a href="index.html"><i class="fas fa-home"></i></a> / <a href=""><span>Among Us</span></a> 
             </div>
             <div class="title-product">
-                <h2>Among Us</h2>
+                <h3><b>Among Us</b></h3>
             </div>
             <div class="row">
                 <div class="col-md-6 box-gallary">
                     <div class="mySlides" style="display: block;">
-                          <img src="https://steamcdn-a.akamaihd.net/steam/apps/945360/header.jpg" style="width:100%">
+                          <img src="img/gallary/imgae-gallary-1.jpg" style="width:100%">
                       </div>
                     
                       <div class="mySlides">
-                          <img src="https://steamcdn-a.akamaihd.net/steam/apps/945360/ss_c80d2f3fab624b18d9531adc6957767a7fede100.600x338.jpg?t=1542387642" style="width:100%">
+                          <img src="img/gallary/imgae-gallary-2.jpg" style="width:100%">
                       </div>
                     
                       <div class="mySlides">
-                          <img src="https://steamcdn-a.akamaihd.net/steam/apps/945360/ss_649e19ff657fa518d4c2b45bed7ffdc4264a4b3a.600x338.jpg?t=1542387642" style="width:100%">
+                          <img src="img/gallary/imgae-gallary-3.jpg" style="width:100%">
                       </div>
                     
                       <div class="mySlides">
-                          <img src="https://steamcdn-a.akamaihd.net/steam/apps/945360/ss_eab32f16b59c005489c10f9063227ed7b54b31ec.600x338.jpg?t=1542387642" style="width:100%">
+                          <img src="img/gallary/imgae-gallary-4.jpg" style="width:100%">
                       </div>
                     
                       <div class="mySlides">
-                          <img src="https://steamcdn-a.akamaihd.net/steam/apps/945360/ss_7ccc894b8f95091f608fa012450549091cce2423.600x338.jpg?t=1542387642" style="width:100%">
+                          <img src="img/gallary/imgae-gallary-5.jpg" style="width:100%">
                       </div>
                     
                       <div class="mySlides">
-                          <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/945360/extras/steam_AboutMultiPlay.png?t=1598556351" style="width:100%">
+                          <img src="img/gallary/imgae-gallary-6.png" style="width:100%">
                       </div>
                     
                       <!-- Next and previous buttons -->
@@ -131,60 +340,55 @@
                       <!-- Thumbnail images -->
                       <div class="row">
                         <div class="column">
-                          <img class="demo cursor" src="https://steamcdn-a.akamaihd.net/steam/apps/945360/header.jpg" style="width:100%" onclick="currentSlide(1)" alt="">
+                          <img class="demo cursor" src="img/gallary/imgae-gallary-1.jpg" style="width:100%" onclick="currentSlide(1)" alt="">
                         </div>
                         <div class="column">
-                          <img class="demo cursor" src="https://steamcdn-a.akamaihd.net/steam/apps/945360/ss_c80d2f3fab624b18d9531adc6957767a7fede100.600x338.jpg?t=1542387642" style="width:100%" onclick="currentSlide(2)" alt="">
+                          <img class="demo cursor" src="img/gallary/imgae-gallary-2.jpg" style="width:100%" onclick="currentSlide(2)" alt="">
                         </div>
                         <div class="column">
-                          <img class="demo cursor" src="https://steamcdn-a.akamaihd.net/steam/apps/945360/ss_649e19ff657fa518d4c2b45bed7ffdc4264a4b3a.600x338.jpg?t=1542387642" style="width:100%" onclick="currentSlide(3)" alt="">
+                          <img class="demo cursor" src="img/gallary/imgae-gallary-3.jpg" style="width:100%" onclick="currentSlide(3)" alt="">
                         </div>
                         <div class="column">
-                          <img class="demo cursor" src="https://steamcdn-a.akamaihd.net/steam/apps/945360/ss_eab32f16b59c005489c10f9063227ed7b54b31ec.600x338.jpg?t=1542387642" style="width:100%" onclick="currentSlide(4)" alt="">
+                          <img class="demo cursor" src="img/gallary/imgae-gallary-4.jpg" style="width:100%" onclick="currentSlide(4)" alt="">
                         </div>
                         <div class="column">
-                          <img class="demo cursor" src="https://steamcdn-a.akamaihd.net/steam/apps/945360/ss_7ccc894b8f95091f608fa012450549091cce2423.600x338.jpg?t=1542387642" style="width:100%" onclick="currentSlide(5)" alt="">
+                          <img class="demo cursor" src="img/gallary/imgae-gallary-5.jpg" style="width:100%" onclick="currentSlide(5)" alt="">
                         </div>
                         <div class="column">
-                          <img class="demo cursor" src="https://cdn.cloudflare.steamstatic.com/steam/apps/945360/extras/steam_AboutMultiPlay.png?t=1598556351" style="width:100%" onclick="currentSlide(6)" alt="">
+                          <img class="demo cursor" src="img/gallary/imgae-gallary-6.png" style="width:100%" onclick="currentSlide(6)" alt="">
                         </div>
                       </div>
                 </div>
                 <div class="col-md-6">
                     <div class="box-order">
                         <h5>Giá sản phẩm</h5>
-                        <span style="font-weight: 600;font-size: 24px;">69.000 VNĐ</span> <a href=""><span class="alarm-title"><i class="fas fa-bell"></i> Chuông báo giảm giá</span></a>
+                        <span style="font-weight: 600;font-size: 24px;">69.000 VNĐ</span> <a href=""><span class="alarm-title"><i class="fas fa-bell"></i></span></a>
                     </div>
                     <div class="box-order">
-                        <div class="row">
-                            <div class="col-md-4">
                                 <h6>Số lượng: </h6>
                                 <div class="box-number">
                                     <button type="button" style="width:46px;height:26px;" class="btn btn-light">-</button>
                                     <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" style="width:46px;height:26px;font-weight: bold;text-align: center;border-radius:0">
                                     <button type="button" style="width:40px;height:26px;" class="btn btn-light">+</button>
                                 </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <button type="button" class="btn btn-primary">Mua ngay</button>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button type="button" class="btn btn-warning"><i class="fa fa-shopping-cart text-left"></i> Thêm giỏ hàng</button>
-                                    </div>
-                                </div>
-                                <span>Quét mã, thanh toán ngay, không cần đăng nhập</span>
-                            </div>
-                        </div>
                     </div>
                     <div class="tags"><img src="img/icon/item-icon-1.png"><b>Tag:</b>
                         <span><a href="#">Casual</a></span>
-                        
+                    </div>
+                    <div class="box-btn-pay">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-primary">Mua ngay</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-warning"><i class="fa fa-shopping-cart text-left"></i> Thêm giỏ hàng</button>
+                            </div>
+                        </div>
+                        <span>Quét mã, thanh toán ngay, không cần đăng nhập</span>
                     </div>
                 </div>
             </div>
-            <div class="tutorial clearfix huongdan" style=""><p>An online and local party game of teamwork and betrayal for 4-10 players...in space!</p>
+            <div class="tutorial clearfix huongdan"><p>An online and local party game of teamwork and betrayal for 4-10 players...in space!</p>
             </div>
             <div class="description-product">
                 <h3>Chi tiết sản phẩm</h3>
@@ -233,6 +437,59 @@
                     <li><b>Storage: </b> 250 MB available space</li>
                 </ul>
             </div>
+            <div class="box-contain-comment">
+                <div class="box-title-question">
+                    <h3>Gửi câu hỏi và ý kiến của bạn về sản phẩm <br>(Chúng tôi sẽ phản hồi trong 5 phút)</h3>
+                </div>
+                <div class="box-title-question">
+                    <button type="button" class="btn btn-primary">Đăng nhập để bình luận</button>
+                </div>
+                <div class="box-title-question">
+                    <div class="box-comment">
+                        <div class="imgae-comment">
+                            <img src="img/icon/icon-user.png" style="width: 40px; border-radius: 50%;" alt="Hình ảnh người dùng"> 
+                        </div>
+                        <div class="content-comment">
+                            <h5>Minh Nhựt</h5>
+                            <p>game này thật sự rất vui mình đã nạp wallet zo để muaaa</p>
+                            <a href="">Trả lời</a> <span>2 ngày trước</span>
+                        </div>
+                    </div>
+                    <div class="box-comment">
+                        <div class="imgae-comment">
+                            <img src="img/icon/icon-user-3.jpg" style="width: 40px;border-radius: 50%;" alt="Hình ảnh người dùng"> 
+                        </div>
+                        <div class="content-comment">
+                            <h5>Tuấn Trung Nguyễn</h5>
+                            <p>Game này giờ hack, bug nhiều wa :(</p>
+                            <a href="">Trả lời</a> <span>4 ngày trước</span>
+                            <div class="box-comment">
+                                <div class="imgae-comment">
+                                    <img src="img/icon/icon-admin.jpg" style="width: 40px;border-radius: 50%;" alt="Hình ảnh người dùng"> 
+                                </div>
+                                <div class="content-comment">
+                                    <h5>CSKH - Huỳnh Phi</h5>
+                                    <p>Dạ mình hiện không chơi game này nên không rõ, chắc là có bạn ạ</p>
+                                    <a href="">Trả lời</a> <span>4 ngày trước</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-comment">
+                        <div class="imgae-comment">
+                            <img src="img/icon/icon-user-2.jpg" style="width: 40px;border-radius: 50%;" alt="Hình ảnh người dùng"> 
+                        </div>
+                        <div class="content-comment">
+                            <h5>PKế Lân</h5>
+                            <p>Trang web thật sự rất tin cậy, cskh cũng vui tính (ɔ◔‿◔)ɔ ♥</p>
+                            <a href="">Trả lời</a> <span>5 ngày trước</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-comment">
+                    <a href="">Xem thêm 32 bình luận</a>
+                </div>
+            </div>
         </div>
         <footer>
             <div class="top-footer">
@@ -240,7 +497,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="img">
-                                <img src="https://hgeqic7azi.vcdn.com.vn/image/catalog/Footer/service1.png" style="max-width:50px;" alt="GIAO HÀNG SIÊU TỐC">
+                                <img src="img/icon/icon-service-1.png" style="max-width:50px;" alt="GIAO HÀNG SIÊU TỐC">
                             </div>
                             <div style="margin-left: 20px;">
                                 <span style="font-size:13px;font-weight:bold;text-transform:uppercase;">GIAO HÀNG SIÊU TỐC</span>
@@ -249,7 +506,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="img">
-                                <img src="https://hgeqic7azi.vcdn.com.vn/image/catalog/Footer/service2.png" style="max-width:50px;" alt="BẢO HÀNH NHANH CHÓNG">
+                                <img src="img/icon/icon-service-2.png" style="max-width:50px;" alt="BẢO HÀNH NHANH CHÓNG">
                             </div>
                             <div style="margin-left: 20px;">
                                 <span style="font-size:13px;font-weight:bold;text-transform:uppercase;">BẢO HÀNH NHANH CHÓNG</span>
@@ -258,7 +515,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="img">
-                                <img src="https://hgeqic7azi.vcdn.com.vn/image/catalog/Footer/service3.png" style="max-width:50px;" alt="UY TÍN 5 SAO">
+                                <img src="img/icon/icon-service-3.png" style="max-width:50px;" alt="UY TÍN 5 SAO">
                             </div>
                             <div style="margin-left: 20px;">
                                 <span style="font-size:13px;font-weight:bold;text-transform:uppercase;">UY TÍN 5 SAO</span>
@@ -267,7 +524,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="img">
-                                <img src="https://hgeqic7azi.vcdn.com.vn/image/catalog/Footer/service4.png" style="max-width:50px;" alt="HỖ TRỢ TẬN TÌNH">
+                                <img src="img/icon/icon-service-4.png" style="max-width:50px;" alt="HỖ TRỢ TẬN TÌNH">
                             </div>
                             <div style="margin-left: 20px;">
                                 <span style="font-size:13px;font-weight:bold;text-transform:uppercase;">HỖ TRỢ TẬN TÌNH</span>
@@ -311,5 +568,72 @@
                 </div>
             </div>
         </footer>
+        <script>
+        // Get the modal
+        var modal = document.getElementById("modalLogin");
+        // Get the button that opens the modal
+        var btn = document.getElementById("btnlogin");
+        // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close1")[0];
+            // When the user clicks the button, open the modal
+            btn.onclick = function() {
+            modal.style.display = "block";
+            }
+            // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                modal.style.display = "none";
+                }
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                if (event.target == modal) {
+                modal.style.display = "none";
+                }
+                }
+        
+                </script>
+                <script type="text/javascript">
+                    // Get the modal
+        var modal2 = document.getElementById("modalRegister");
+        // Get the button that opens the modal
+        var btn2 = document.getElementById("btnregister");
+        // Get the <span> element that closes the modal
+            var span2 = document.getElementsByClassName("close2")[0];
+            // When the user clicks the button, open the modal
+            btn2.onclick = function() {
+            modal2.style.display = "block";
+            }
+            // When the user clicks on <span> (x), close the modal
+                span2.onclick = function() {
+                modal2.style.display = "none";
+                }
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                if (event.target == modal2) {
+                modal2.style.display = "none";
+                }
+                }
+                </script>
+                <script type="text/javascript">
+                    // Get the modal
+        var modal3 = document.getElementById("modalRegister2");
+        // Get the button that opens the modal
+        var btn3 = document.getElementById("btnregister2");
+        // Get the <span> element that closes the modal
+            var span3 = document.getElementsByClassName("close3")[0];
+            // When the user clicks the button, open the modal
+            btn3.onclick = function() {
+            modal3.style.display = "block";
+            }
+            // When the user clicks on <span> (x), close the modal
+                span3.onclick = function() {
+                modal3.style.display = "none";
+                }
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                if (event.target == modal3) {
+                modal3.style.display = "none";
+                }
+                }
+                </script>
     </body>
 </html>

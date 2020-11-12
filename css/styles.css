@@ -89,18 +89,14 @@ body{
     padding: 15px;
     width: 150px;
     font-size: 17px;
-
 }
 .box-item-cart {
     padding-top:10px;
-
 }
-
 .box-item-cart-contain i.fas.fa-shopping-cart {
     font-size: 20px;
     margin-right: 5px;
     color: #ffffff;
-    margin-left: 10px;
 }
 span.numberItem {
     background-color: orange;
@@ -395,6 +391,7 @@ h2 {
     font-weight: 600;
 }
 .banner-register{
+    background-image: url(../img/cataglog/banner-1.png);
     margin-bottom: 20px;
     line-height: 30px;
     color:#ffffff;
@@ -402,7 +399,6 @@ h2 {
     height:300px;
     object-fit: contain;
     text-align: center;
-    background-image: url(../img/cataglog/banner-1.png);
 }
 .banner-register h4 {
     font-size: 18px;
@@ -501,7 +497,7 @@ h2 {
   
   /* Add a transparency effect for thumnbail images */
   .box-gallary .demo {
-    opacity: 0.6;
+    position: static;
   }
   
   .box-gallary .active,
@@ -552,15 +548,17 @@ h2 {
     font-weight: 600;
     border: 1px solid gray;
 }
-.box-order .btn{
+.box-btn-pay .btn{
     font-weight: 600;
     color:#ffffff;
 }
-.box-order .col-md-8 {
+.box-btn-pay {
+    padding-right: 35px;
+    padding-left: 45px;
     margin-top: 7px;
 }
-.box-order .col-md-8 .row .col-md-6 .btn {
-    margin-left: -12px;
+.box-btn-pay .row .col-md-6 .btn {
+    margin-left: 0px;
     width: 98%;
 }
 .box-status,.box-order h5 {
@@ -635,4 +633,54 @@ h2 {
 }
 .payment-last{
     border-bottom:1px solid #f5f5f5;
+}
+.box-title-question{
+    padding:25px 0px;
+    border-top:1px solid #e8e8e8;
+}
+.box-title-question h3{
+    font-weight:800 ;
+    font-size: 20px;
+}
+.box-title-question .btn{
+    font-size: 14px;
+}
+.box-contain-comment{
+    margin-bottom:30px;
+    margin-top:50px;
+}
+.box-comment{
+    margin-top:30px;
+    margin-left: 30px;
+    display: flex;
+}
+.imgae-comment{
+    margin-right:20px;
+}
+.content-comment h5{
+    font-size: 15px;
+    font-weight: 700;
+}
+.content-comment p{
+    margin-bottom:5px;
+}
+.content-comment a{
+    margin-right:10px;
+    color:blue;
+}
+.content-comment a:hover{
+    color:darkblue;
+    text-decoration: none;
+}
+.add-comment{
+    padding-left:50px;
+}
+.add-comment a{
+    font-weight: 600;
+    color:blue;
+    font-size: 15px;
+}
+.add-comment a:hover{
+    text-decoration: none;
+    color:blue;
 }

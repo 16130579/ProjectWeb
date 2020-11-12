@@ -1,0 +1,8 @@
+.bg-register-image {
+    background-position: center;
+    background-size: cover;
+}
+.bg-register-image>img{
+     width: 450px;
+     height: 601px;
+}
