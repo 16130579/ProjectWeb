@@ -51,14 +51,16 @@
 /* Stype giỏ Hàng */
 .container1 .phu-ngoai .form-tt {
 	margin-top: 20px;
-	border: 1px solid;
+	border: 1px solid #808080;
 	border-radius: 7px;
+
 }
 
 .container1 .phu-ngoai .form-tt .form-tt1 {
 	height: 365px;
 	background: white;
 	border-radius: 7px;
+	border: 1px solid white;
 }
 
 .container1 .phu-ngoai .form-tt .hed {
