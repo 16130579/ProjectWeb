@@ -1,0 +1,47 @@
+.container .side_2 {
+	margin-left: 85%;
+	width: 15%;
+	position: fixed;
+}
+
+.container .side_2 .cont {
+	padding-top: 35px;
+}
+
+.container .side_2 .text {
+	padding-left: 18px;
+	overflow: auto;
+	border-left: 0.5px solid #9eabb7;
+}
+
+.container .side_2 .text .img {
+	float: left;
+}
+
+.container .side_2 .text .content {
+	float: left;
+	margin-top: 5px;
+	margin-left: 6px;
+	font-weight: bold;
+	color: #9eabb7;
+}
+
+.container .side_2 .buoc {
+	padding-left: 18px;
+	padding: 8px 32px;
+	cursor: pointer;
+	border-left: 0.5px solid #9eabb7;
+}
+.container .side_2 .buoc .buoc1{
+	display: flex;
+	color: #9eabb7;
+	text-decoration: none;
+	
+}
+.container .side_2 .buoc:hover {
+	color: #0a51e8;
+}
+
+.container .side_2 .buoc:active {
+	border-left: 2px solid #0a51e8;
+}

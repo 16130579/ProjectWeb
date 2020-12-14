@@ -1,0 +1,37 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -.75rem;
+    margin-left: -.75rem;
+}
+.bg-login-image {
+    background-position: center;
+    background-size: cover;
+}
+.bg-login-image>img{
+    width: 515px;
+}
+.col-lg-6 {
+     flex: 0 0 50%;
+     max-width: 50%;
+}
+form.user .form-control-user {
+    font-size: .8rem;
+    border-radius: 3rem;
+    padding: 1.1rem 1rem;
+}
+form.user .btn-user {
+    font-size: .8rem;
+    border-radius: 10rem;
+    padding: .75rem 1rem;
+}
+.btn-google {
+    color: #fff;
+    background-color: #ea4335;
+    border-color: #fff;
+}
+.btn-facebook {
+    color: #fff;
+    background-color: #3b5998;
+    border-color: #fff;
+}

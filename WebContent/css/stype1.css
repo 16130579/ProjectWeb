@@ -1,0 +1,184 @@
+.container .side_1 {
+	position: fixed;
+	width: 22%;
+	background: #f5f7f9;
+}
+
+.container .side_1 .hed {
+	margin: 20px;
+	margin-right: 0px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #eef2f5;
+	overflow: auto;
+	margin-bottom: 0px;
+}
+
+.container .side_1 .hed .img {
+	float: left;
+	margin-left: 13px;
+}
+
+.container .side_1 .hed .img>img {
+	width: 35px;
+	height: 35px;
+}
+
+.container .side_1 .hed .aaa {
+	float: left;
+	margin-top: 5px;
+}
+
+.container .side_1 .hed .aaa>a {
+	font-size: 25px;
+	margin: 16px;
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.container .side_1 .hed .aaa>a:hover {
+	color: #227bcb
+}
+
+.container .side_1 .center {
+	padding-left: 45px;
+	font-size: 16px;
+}
+
+.container .side_1 .center .aa {
+	padding: 7px 0px;
+	color: #595c64;
+}
+
+.container .side_1 .center .aa:hover {
+	background: #9daab6;
+}
+
+.container .side_1 .center .a {
+	text-decoration: none;
+	color: black;
+}
+
+.container .side_1 .center .a_1 {
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.container .side_1 .center .p {
+	color: #9daab6;
+	font-weight: bold;
+}
+
+    /* Stype giỏ Hàng */
+
+.container1 .phu-ngoai .goods {
+	width: 100%;
+	min-height: 100px;
+	background: white;
+}
+
+.container1 .phu-ngoai .goods .goods-co {
+	overflow: auto;
+	border: 1px solid;
+	border-radius: 7px;
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-1 {
+	width: 405px;
+	height: 110px;
+	float: left;
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-1>img {
+	width: 100px;
+	height: 70px;
+	background: black;
+	margin: 20px;
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-1 .goods-2 {
+	float: right;
+	margin-top: 20px;
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-1 .goods-2>a {
+	color: blue;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-1 .goods-2 .thep {
+    width: 150px;
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-1 .goods-2 .truoc {
+	display: inline;
+	margin: 6px 0px;
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-1 .goods-2 .sau {
+	display: inline;
+	color: green;
+	margin: 6px 0px;
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-1 .goods-2 .a_sau {
+	color: red;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-1 .goods-3 {
+	float: right;
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-3 {
+	overflow: auto;
+	margin-top: 21px;
+	margin-right: 20px;
+	float: right;
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-3 .gia {
+	margin-bottom: 10px;
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-3 .quantity-block {
+	border: 1px solid;
+	border-radius: 5px;
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-3 .quantity-block>input {
+	width: 30px;
+	margin-left: 4px;
+	border: 0px;
+	text-align: center;
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-3 .quantity-block>span button
+	{
+	width: 28px;
+	padding: 6px;
+	background: white;
+	border-radius: 5px;
+	border: 0px;
+	cursor: pointer;
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-3 .quantity-block>span button:hover
+	{
+	background-color: #ebeaea
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-3 .quantity-block .bt-truoc
+	{
+	border-right: 1px solid;
+}
+
+.container1 .phu-ngoai .goods .goods-co .goods-3 .quantity-block .bt-sau
+	{
+	border-left: 1px solid;
+}

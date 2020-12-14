@@ -1,0 +1,131 @@
+.container .middle {
+	width: 63%;
+	margin-left: 22%;
+}
+
+.container .middle .contai {
+	padding: 50px 80px;
+}
+
+.container .middle .hed {
+	font-size: 36px;
+	padding-bottom: 50px;
+	border-bottom: 1px solid #e6ecf1;
+}
+
+.container .middle .center {
+	
+}
+
+.container .middle .center .buoc {
+	margin: 30px 0px;
+	font-weight: bold;
+	font-size: 20px;
+	display: flex;
+	position: relative;
+}
+
+.container .middle .center .buoc_sau {
+	padding-bottom: 30px;
+}
+
+.container .middle .center .img_1>img {
+	width: 100%;
+}
+
+.container .middle .center .img>img {
+	
+}
+
+.container .middle .center .bold {
+	font-weight: bold;
+}
+
+.container .middle .center .buoc_sau .no_bold {
+	color: #595c64;
+}
+
+.container .middle .center .buoc_sau>img {
+	width: 100%;
+}
+/* Stype giỏ Hàng */
+.container1 .phu-ngoai .form-tt {
+	margin-top: 20px;
+	border: 1px solid;
+	border-radius: 7px;
+}
+
+.container1 .phu-ngoai .form-tt .form-tt1 {
+	height: 365px;
+	background: white;
+	border-radius: 7px;
+}
+
+.container1 .phu-ngoai .form-tt .hed {
+	height: 40px;
+	font-size: 20px;
+	text-align: center;
+	padding-top: 5px;
+	background: #59e5f3;
+	font-weight: bold;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
+}
+
+.container1 .phu-ngoai .form-tt .sau-hed {
+	overflow: auto;
+}
+
+.container1 .phu-ngoai .form-tt .sau-hed .oo1 {
+	margin: 20px;
+	margin-bottom: 0px;
+	font-size: 18px;
+	border-bottom: 1px dotted;
+	padding-bottom: 15px;
+	font-weight: bold;
+}
+
+.container1 .phu-ngoai .form-tt .sau-hed .oo2 {
+	margin: 20px;
+	margin-bottom: 0px;
+	font-size: 18px;
+	border-bottom: 1px dotted;
+	padding-bottom: 15px;
+	font-weight: bold;
+}
+
+.container1 .phu-ngoai .form-tt .sau-hed .oo2 .oo2-sau {
+	float: right;
+	color: red;
+}
+
+.container1 .phu-ngoai .form-tt .sau-hed .oo1 .oo1-truoc {
+	color: #a4a4a4;
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.container1 .phu-ngoai .form-tt .sau-hed .oo1 .oo1-sau {
+	float: right;
+}
+
+.container1 .phu-ngoai .form-tt .nap-many {
+	overflow: auto;
+	margin: 20px;
+}
+
+.container1 .phu-ngoai .form-tt .nap-many>button {
+	height: 35px;
+	width: 100%;
+	font-size: 18px;
+	font-weight: bold;
+	background: red;
+	border: 0px;
+	border-radius: 5px;
+	color: white;
+	cursor: pointer;
+}
+
+.container1 .phu-ngoai .form-tt .nap-many>button:hover {
+	background: #37e44c;
+}
