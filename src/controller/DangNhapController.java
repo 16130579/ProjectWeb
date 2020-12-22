@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,19 +43,26 @@ public class DangNhapController extends HttpServlet {
 		String email = request.getParameter("email");
 		String pass = request.getParameter("password");
 		int idUser;
-		idUser = UserDAO.checkLogin(email, pass);
-		if (idUser != 0) {
-			User user = UserDAO.getThongTinUser(idUser);
-			HttpSession session = request.getSession();
-			session.setAttribute("USER", user);
-//			request.setAttribute("errorLogin", "Đăng nhập thành công : " + email);
-//			request.getRequestDispatcher("profile.jsp").forward(request, response);
-			response.sendRedirect("profile.jsp");
-
-		}else {
-			request.setAttribute("errorLogin", "Sai Email hoặc mật khẩu");
-			request.getRequestDispatcher("test.jsp").forward(request, response);
+		try {
+			idUser = UserDAO.checkLogin(email, pass);
+			if (idUser != 0) {
+				User user = UserDAO.getThongTinUser(idUser);
+				if (user.getRole() == 1) {
+					HttpSession session = request.getSession();
+					session.setAttribute("USER", user);
+					response.sendRedirect("profile.jsp");
+				}else {
+					response.sendRedirect("admin/product.jsp");
+				}
+			}else {
+				request.setAttribute("errorLogin", "Sai Email hoặc mật khẩu");
+				request.getRequestDispatcher("test.jsp").forward(request, response);
+			}
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 	}
 
 }

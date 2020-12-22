@@ -1,5 +1,7 @@
 package model;
 
+import sun.util.calendar.BaseCalendar.Date;
+
 public class User {
 	int id;
 	String firstName;
@@ -9,8 +11,11 @@ public class User {
 	int cmnd;
 	String password;
 	int role;
+	int balance;
+	String key;
+	Date keyDate;
 	public User(int id, String firstName, String lastName, String email, int phone, int cmnd, String password,
-			int role) {
+			int role, int balance, String key) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -20,10 +25,30 @@ public class User {
 		this.cmnd = cmnd;
 		this.password = password;
 		this.role = role;
+		this.balance = balance;
+		this.key = key;
 	}
+	
 	public User() {
 		super();
 	}
+	
+	public int getBalance() {
+		return balance;
+	}
+
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -78,5 +103,7 @@ public class User {
 				+ ", phone=" + phone + ", cmnd=" + cmnd + ", password=" + password + ", role=" + role + "]";
 	}
 	
-	
+	public static void main(String[] args) {
+		
+	}
 }

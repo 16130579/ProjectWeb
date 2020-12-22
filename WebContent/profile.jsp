@@ -78,7 +78,7 @@
 							<div class="col-lg-8" style="margin-bottom: 20px;"> 
 								<input type="text" name="" readonly value="<%=user.getEmail() %>" id="email">
 								<br>
-								<input type="text" name="" value="<%=user.getFirstName() + user.getLastName() %>">
+								<input type="text" name="" value="<%=user.getFirstName()%>">
 								<br>
 								<input type="text" name="" value="<%=user.getPhone() %>">
 								<br>

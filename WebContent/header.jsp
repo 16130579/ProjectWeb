@@ -16,6 +16,7 @@
 	rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <style type="text/css">
 .dropbtn {
 	background-color: #4267B2;
@@ -165,6 +166,35 @@ to {
 	text-decoration: none;
 	cursor: pointer;
 }
+.modalP {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 7%; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.close4 {
+	color: black;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	position: absolute;
+	top: 3px;
+	right: 20px;
+}
+
+.close4:hover, .close4:focus {
+	color: red;
+	text-decoration: none;
+	cursor: pointer;
+}
 </style>
 <style type="text/css">
 .dropbtnS {
@@ -293,7 +323,23 @@ main .row {
 .col-lg-4 label {
 	margin: 10px;
 }
+
+
 </style>
+<script type="text/javascript">
+var check = function() {
+	if (document.getElementById('password').value ==
+	document.getElementById('passwordConfirm').value) {
+	document.getElementById('message').style.color = 'green';
+	document.getElementById('message').innerHTML = 'Xác nhận mật khẩu mới thành công';
+	document.getElementById('xacnhan').disabled = false;
+	} else {
+	document.getElementById('message').style.color = 'red';
+	document.getElementById('message').innerHTML = 'Xác nhận mật khẩu mới thất bại';
+	document.getElementById('xacnhan').disabled = true;
+	}
+	}
+	</script>
 </head>
 <body>
 	<div class="fix-position">
@@ -399,11 +445,12 @@ main .row {
 												</form>
 												<hr>
 												<div class="text-center">
-													<a class="small" href="forgot-password.html">Quên mật
-														khẩu?</a>
+													<a class="small" id="btnPassword"><span
+														style="color: black;cursor: pointer;">Quên mật khẩu?</span></a>
 												</div>
-												<div class="text-center">
-													<a class="small" href="register.html">Tạo tài khoản!</a>
+												<div class="text-center" style="color: black;">
+													<a class="small" href="register.html"><span
+														style="color: black;">Tạo tài khoản!</span></a>
 												</div>
 											</div>
 										</div>
@@ -450,15 +497,18 @@ main .row {
 														<div class="col-sm-6 mb-3 mb-sm-0">
 															<input type="password"
 																class="form-control form-control-user" name="password"
-																id="exampleInputPassword" placeholder="Password">
+																id="password" placeholder="Password" onkeyup='check();'>
 														</div>
 														<div class="col-sm-6">
 															<input type="password"
 																class="form-control form-control-user"
-																id="exampleRepeatPassword" placeholder="Repeat Password">
+																id="passwordConfirm" placeholder="Repeat Password"
+																onkeyup='check();'>
 														</div>
+														<b><h5 id="message"
+																style="margin-left: 30px; margin-top: 10px"></h5></b>
 													</div>
-													<input type="submit" value="Đăng ký"
+													<input type="submit" id="xacnhan" value="Đăng ký"
 														class="btn btn-primary btn-user btn-block" />
 
 													<hr>
@@ -485,6 +535,103 @@ main .row {
 
 							</div>
 						</div>
+
+						<div id="modalPassword" class="modalP">
+							<!-- Modal content -->
+							<div class="modal-content">
+
+								<div class="modal-body" style="color: black;">
+
+									<div class="row">
+										<!-- <div class="col-lg-5 d-none d-lg-block bg-register-image">
+                                                 <img src="img/dangky.jpg"> 
+                                            </div> -->
+										<div class="col-lg-12">
+											<div class="p-5">
+												<div class="text-center">
+													<span class="close4">&times;</span>
+													<h1 class="h4 text-gray-900 mb-4">Quên mật khẩu</h1>
+												</div>
+												<form class="user">
+													<div class="form-group">
+														<input type="email" class="form-control form-control-user"
+															id="exampleInputEmail" placeholder="Email Address">
+													</div>
+
+													<a type="submit" class="btn btn-primary btn-user btn-block"
+														style="color: white"> Gửi Email Xác nhận </a>
+
+
+												</form>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					            <div id="modalRegister2" class="modal">
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    
+                                    <div class="modal-body" style="color: black;">
+
+                                        <div class="row">
+                                            <div class="col-lg-5 d-none d-lg-block bg-register-image">
+                                                <img src="img/dangky.jpg">
+                                            </div>
+                                            <div class="col-lg-7">
+                                                <div class="p-5">
+                                                    <div class="text-center">
+                                                    	<span class="close3">&times;</span>
+                                                        <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                                    </div>
+                                                    <form class="user">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                                                            </div>
+                                                        </div>
+                                                        <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                                            Register Account
+                                                        </a>
+                                                        <hr>
+                                                        <a href="index.html" class="btn btn-google btn-user btn-block">
+                                                            <i class="fab fa-google fa-fw"></i> Register with Google
+                                                        </a>
+                                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                                            <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                                        </a>
+                                                    </form>
+                                                    <hr>
+                                                    <div class="text-center">
+                                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <a class="small" href="login.html">Already have an account? Login!</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
 					</div>
 				</div>
 				<%
@@ -497,9 +644,9 @@ main .row {
 						</button>
 						<div class="dropdown-contentS">
 							<p>Số dư : 108,000 đ</p>
-							<a href="profile.jsp">Thông tin tài khoản</a> <a href="#">Lịch sử đơn
-								hàng</a> <a href="#">Nạp thêm tiền</a> <a href="#">Đổi mật khẩu</a>
-							<a href="DangXuatController">Đăng xuất</a>
+							<a href="profile.jsp">Thông tin tài khoản</a> <a href="#">Lịch
+								sử đơn hàng</a> <a href="#">Nạp thêm tiền</a> <a href="#">Đổi
+								mật khẩu</a> <a href="DangXuatController">Đăng xuất</a>
 						</div>
 					</div>
 				</div>
@@ -514,7 +661,7 @@ main .row {
 			</div>
 		</div>
 	</div>
-	<script>
+<script>
         // Get the modal
         var modal = document.getElementById("modalLogin");
         // Get the button that opens the modal
@@ -537,7 +684,7 @@ main .row {
                 }
         
                 </script>
-	<script type="text/javascript">
+                <script type="text/javascript">
                     // Get the modal
         var modal2 = document.getElementById("modalRegister");
         // Get the button that opens the modal
@@ -559,7 +706,7 @@ main .row {
                 }
                 }
                 </script>
-	<script type="text/javascript">
+                <script type="text/javascript">
                     // Get the modal
         var modal3 = document.getElementById("modalRegister2");
         // Get the button that opens the modal
@@ -582,5 +729,31 @@ main .row {
                 }
                 </script>
 
+                <script type="text/javascript">
+                    // Get the modal
+        var modal4 = document.getElementById("modalPassword");
+        // Get the button that opens the modal
+        var btn4 = document.getElementById("btnPassword");
+        // Get the <span> element that closes the modal
+            var span4 = document.getElementsByClassName("close4")[0];
+            // When the user clicks the button, open the modal
+            btn4.onclick = function() {
+            modal4.style.display = "block";
+            modal3.style.display = "none";
+                modal2.style.display = "none";
+                modal.style.display = "none";
+            }
+            // When the user clicks on <span> (x), close the modal
+                span4.onclick = function() {
+                modal4.style.display = "none";
+
+                }
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                if (event.target == modal4) {
+                modal4.style.display = "none";
+                }
+                }
+                </script>
 </body>
 </html>

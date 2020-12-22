@@ -25,16 +25,11 @@ public class DangKyController extends HttpServlet {
     }
 
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String firstName = request.getParameter("firstName");
-		String lastName = request.getParameter("lastName");
+		String firstName = request.getParameter("firstname");
+		String lastName = request.getParameter("lastname");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		User user = new User();
@@ -50,6 +45,7 @@ public class DangKyController extends HttpServlet {
 				if(insertUser) {
 					HttpSession session = request.getSession();
 					session.setAttribute("USER", user);
+					
 				}
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}else {
