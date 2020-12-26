@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page import="model.Product"%> 
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,11 +16,11 @@
   <title>Admin</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -303,19 +305,19 @@
                    </thead>
     <tbody>
     
-    
+    <c:forEach items="${list}" var="p">
     <tr>
-   <td>1</td>
-    <td><img src="netflix1.png" alt="" width="100px" height="50px"></td>
+   <td>${p.getId()}</td>
+    <td><img src="${p.getImg()}" alt="" width="100px" height="50px"></td>
     
-    <td>Netflit</td>
-    <td>190,000 đ</td>
+    <td>${p.getName()}</td>
+    <td>${p.getPrice()} đ</td>
     <td>30</td>
     <td><a href="keycode.html">Xem chi tiết</a></td>
     <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><i class="fas fa-pencil-alt"></i></button></p></td>
     <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><i class="fas fa-trash"></i></button></p></td>
     </tr>
-    
+    </c:forEach>
      
    
     
@@ -347,7 +349,7 @@
 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
       <div class="modal-dialog">
     <div class="modal-content">
-    <form action="../AddProductController" method="post" enctype="multipart/form-data" id="myform">
+    <form action="AddProductController" method="post" enctype="multipart/form-data" id="myform">
           <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         <h4 class="modal-title" id="Heading" style="margin-right: 32%;">Thêm sản phẩm</h4>
@@ -496,21 +498,21 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="admin/vendor/jquery/jquery.min.js"></script>
+  <script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+  <script src="admin/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="admin/vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
+  <script src="admin/js/demo/chart-area-demo.js"></script>
+  <script src="admin/js/demo/chart-pie-demo.js"></script>
 
 </body>
 

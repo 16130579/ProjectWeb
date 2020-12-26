@@ -57,8 +57,25 @@ public class ProductDAO {
 		}
 		return list;
 	}
+	public static boolean addProduct(Product product) {
+		Connection connection;
+		PreparedStatement statement = null;
+		try {
+			connection = DBConnection.getConnection();
+			String sql = "INSERT INTO [product] (product_name, product_price, product_sale, product_des, product_status, category_id, product_img"
+					+ ") VALUES (N'" +product.getName() + "', N'" + product.getPrice()
+					+ "', N'" + product.getSales()+  "', N'" + product.getDes() + "', N'" + 1 + "', N'"+ 1 +"', N'" + product.getImg() + "')";
+			statement = connection.prepareStatement(sql);
+			return statement.executeUpdate() > 0;
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	public static void main(String[] args) {
-		System.out.println(getListCategory().toString());
-		System.out.println(getListProduct().toString());
+//		System.out.println(getListCategory().toString());
+//		System.out.println(getListProduct().toString());
+		Product p = new Product(10, "aaaa", "/ssss", 100000, 15420, "sssssss", 1, 1);
+		System.out.println(addProduct(p));
 	}
 }
