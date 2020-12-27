@@ -100,6 +100,7 @@ public class UserDAO {
 					user.setPhone(resultSet.getInt("phone"));
 					user.setCmnd(resultSet.getInt("cmnd"));
 					user.setPassword(resultSet.getString("password"));
+					user.setBalance(resultSet.getInt("balance"));
 					user.setRole(resultSet.getInt("role_id"));
 					
 				}
@@ -109,7 +110,7 @@ public class UserDAO {
 			return user;
 		}
 		// mã hóa passowrd
-		private static String convertHashToString(String text) throws NoSuchAlgorithmException {
+		public static String convertHashToString(String text) throws NoSuchAlgorithmException {
 	        MessageDigest md = MessageDigest.getInstance("MD5");
 	        byte[] hashInBytes = md.digest(text.getBytes(StandardCharsets.UTF_8));
 	        StringBuilder sb = new StringBuilder();
@@ -164,14 +165,71 @@ public class UserDAO {
 			}
 			return true;
 		}
-		
-		public static void main(String[] args) throws NoSuchAlgorithmException {
+		//đổi mật khẩu
+		public static boolean changePassword(String email, String password) throws NoSuchAlgorithmException {
+			Connection connection;
+			try {
+				connection = DBConnection.getConnection();
+				String convertPass = convertHashToString(password);
+				String sql = "UPDATE [users] SET password = ? WHERE email = ?";
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setNString(1, convertPass);
+				preparedStatement.setNString(2, email);
+				int rowAffect = preparedStatement.executeUpdate();
+				if (rowAffect == 1) return true;
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+			return false;
+		}
+		//kiểm tra pass
+		public static boolean checkPass(String pass, String email) throws ClassNotFoundException, SQLException, NoSuchAlgorithmException {
+			Connection connection;
+			User user = new User();
+			
+			connection = DBConnection.getConnection();
+			String convertPass = convertHashToString(pass);
+			String sql = "SELECT password FROM [users] WHERE email = ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setNString(1, email);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				user.setPassword(resultSet.getString("password"));	
+			}
+			if (user.getPassword().equals(convertPass)) {
+				return true;
+			}
+			return false;
+		}
+		//update user
+		public static boolean updateUser(int idUser, User user) {
+			Connection connection;
+			try {
+				connection = DBConnection.getConnection();
+				String sql = "UPDATE [users] SET first_name = ?, last_name = ?, email = ?, phone = ?, cmnd = ? WHERE user_id = ?";
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setNString(1, user.getFirstName());
+				preparedStatement.setNString(2, user.getLastName());
+				preparedStatement.setNString(3, user.getEmail());
+				preparedStatement.setInt(4, user.getPhone());
+				preparedStatement.setInt(5, user.getCmnd());
+				preparedStatement.setInt(6, idUser);
+				int rowAffect = preparedStatement.executeUpdate();
+				if (rowAffect == 1) return true;
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+			return false;
+		}
+		public static void main(String[] args) throws NoSuchAlgorithmException, ClassNotFoundException, SQLException {
 //			System.out.println(checkLogin("tuanthanh@gmail.com", "123"));
 //			System.out.println(convertHashToString("123"));
 //			System.out.println(getThongTinUser(1).toString());
 //			System.out.println(insertUser(new User(4, "tuấn", "thành", "thanh@gmail.com", 84203910, 251131359, "123", 1,0,"")));
 //			System.out.println(checkUser("thanh@gmail.com"));
-			System.out.println(napTien(13, 100000));
-			System.out.println(sendMail("16130579@st.hcmuaf.edu.vn", "New", "Success"));
+//			System.out.println(napTien(13, 100000));
+//			System.out.println(sendMail("16130579@st.hcmuaf.edu.vn", "New", "Success"));
+//			System.out.println(changePassword("thanh@gmail.com", "thanh98thehepro"));
+			System.out.println(checkPass("thanh98thehepro", "thanh@gmail.com"));
 		}
 }

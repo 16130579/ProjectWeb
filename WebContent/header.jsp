@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@page import="model.User"%>
+  <%@page import="dao.UserDAO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -643,9 +644,10 @@ var check = function() {
 							<b style="font-size: 15px"><%=user.getEmail() %></b>
 						</button>
 						<div class="dropdown-contentS">
-							<p>Số dư : 108,000 đ</p>
-							<a href="profile.jsp">Thông tin tài khoản</a> <a href="#">Lịch
-								sử đơn hàng</a> <a href="#">Nạp thêm tiền</a> <a href="#">Đổi
+						<% user.setBalance((UserDAO.getThongTinUser(user.getId())).getBalance()); %>
+							<p>Số dư : <%= user.getBalance() %> đ</p>
+							<a href="profile.jsp">Thông tin tài khoản</a> <a href="history.jsp">Lịch
+								sử đơn hàng</a> <a href="cash.jsp">Nạp thêm tiền</a> <a href="ChangePassword.jsp">Đổi
 								mật khẩu</a> <a href="DangXuatController">Đăng xuất</a>
 						</div>
 					</div>

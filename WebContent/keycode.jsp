@@ -1,7 +1,5 @@
-<%@page import="model.Product"%> 
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +11,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Admin</title>
+  <title>Key</title>
 
   <!-- Custom fonts for this template-->
   <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -280,7 +278,7 @@
         	<div class="container">
 	<div class="row">
 		
-        <button class="btn btn-success btn-xs" data-title="Add" data-toggle="modal" data-target="#add" >Thêm sản phẩm</button>
+        <button class="btn btn-success btn-xs" data-title="Add" data-toggle="modal" data-target="#add" >Thêm Key</button>
         
         <div class="col-md-12">
           <br>
@@ -293,11 +291,6 @@
                    <thead>
                    
                    <td>Mã</td>
-                   <th>Hình ảnh</th>
-                    
-                     <th>Tên</th>
-                     <th>Giá</th>
-                     <th>Số lượng</th>
                      <th>Key Code</th>
                       <th>Edit</th>
                       
@@ -305,20 +298,45 @@
                    </thead>
     <tbody>
     
-    <c:forEach items="${list}" var="p">
     <tr>
-   <td>${p.getId()}</td>
-    <td><img src="${p.getImg()}" alt="" width="100px" height="50px"></td>
-    
-    <td>${p.getName()}</td>
-    <td>${p.getPrice()} đ</td>
-    <td>30</td>
-    <td><a href="keycode.html">Xem chi tiết</a></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditProductController?id=${p.getId()}"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal"><i class="fas fa-pencil-alt"></i></button></a></p></td>
+   <td>1</td>
+    <td>HCSAS_ZXXCCMS_SKDMCJS</td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><i class="fas fa-pencil-alt"></i></button></p></td>
     <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><i class="fas fa-trash"></i></button></p></td>
     </tr>
-    </c:forEach>
-     
+    
+ <tr>
+   <td>2</td>
+    <td>SCASD_ZXXCCMS_SKDMCJS</td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><i class="fas fa-pencil-alt"></i></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><i class="fas fa-trash"></i></button></p></td>
+    </tr>
+    
+    
+ <tr>
+   <td>3</td>
+    <td>FFFF-SSSSS</td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><i class="fas fa-pencil-alt"></i></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><i class="fas fa-trash"></i></button></p></td>
+    </tr>
+    
+    
+    
+<tr>
+   <td>4</td>
+    <td>MJHNHHD-DJJMDJ</td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><i class="fas fa-pencil-alt"></i></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><i class="fas fa-trash"></i></button></p></td>
+    </tr>
+    
+    
+<tr>
+   <td>5</td>
+    <td>MKJBGFTY</td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><i class="fas fa-pencil-alt"></i></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><i class="fas fa-trash"></i></button></p></td>
+    </tr>
+    
    
     
    
@@ -349,40 +367,19 @@
 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
       <div class="modal-dialog">
     <div class="modal-content">
-    <form action="AddProductController" method="post" enctype="multipart/form-data" id="myform">
           <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-        <h4 class="modal-title" id="Heading" style="margin-right: 32%;">Thêm sản phẩm</h4>
+        <h4 class="modal-title" id="Heading" style="margin-right: 38%;">Thêm Key</h4>
       </div>
           <div class="modal-body">
-          
             <div class="form-group">
-        <input class="form-control " name="name" type="text" placeholder="Nhập tên sản phẩm">
+        <input class="form-control " type="text" placeholder="Nhập mã Key">
         </div>
-          <div class="form-group">
-        <input class="form-control " name="file" type="file" placeholder="Tải hình ảnh">
-        </div>
-        <div class="form-group">
-        
-        <input class="form-control " name="price" type="text" placeholder="Nhập giá">
-        </div>
-        <div class="form-group">
-        <textarea rows="2" class="form-control" name="des" placeholder="Nhập thông tin"></textarea>
-       
-        </div>
-        <div class="form-group">
-                        <select name="" id="" class="form-control">
-                          <option value="">Steam</option>
-                          <option value="" selected>Software</option>
-                          <option value="">Televisiton</option>
-                          
-                        </select>
-                      </div>
+          
       </div>
           <div class="modal-footer ">
-        <a onclick="document.getElementById('myform').submit()" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Cập nhật</a>
+        <button type="button" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Thêm</button>
       </div>
-      </form>
         </div>
     <!-- /.modal-content --> 
   </div>
@@ -391,6 +388,27 @@
 <!-- endadd -->
 
 
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title" id="Heading" style="margin-right: 32%;">Thay đổi thông tin</h4>
+      </div>
+          <div class="modal-body">
+            <div class="form-group">
+        <input class="form-control " type="text" value="MJHNHHD-DJJMDJ">
+        </div>
+          
+      </div>
+          <div class="modal-footer ">
+        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Cập nhật</button>
+      </div>
+        </div>
+    <!-- /.modal-content --> 
+  </div>
+      <!-- /.modal-dialog --> 
+    </div>
     
     
     
@@ -484,4 +502,3 @@
 </body>
 
 </html>
-    
