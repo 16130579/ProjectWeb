@@ -18,10 +18,11 @@ import dao.ProductDAO;
 import model.Product;
 
 @MultipartConfig
-@WebServlet("/AddProductController")
-public class AddProductController extends HttpServlet {
+@WebServlet("/UpdateProduct")
+public class UpdateProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	
 	protected void processRequest(HttpServletRequest request,
 	        HttpServletResponse response)
 	        throws ServletException, IOException {
@@ -31,33 +32,38 @@ public class AddProductController extends HttpServlet {
 	        Part part = request.getPart("file");
 	        String fileName = part.getSubmittedFileName();
 	        String path = "D:\\WorkSpace\\Web-2020\\WebContent\\img\\img-product\\"+fileName;
-	    
+
 	        InputStream is = part.getInputStream();
 	        boolean suc =upoloadFile(is, path);
-	        String name = request.getParameter("name");
-	        int price = Integer.parseInt(request.getParameter("price"));
-	        String des = request.getParameter("des");
-	        request.getParameter("des");
-	        Product product = new Product();
-	        product.setName(name);
-	        product.setPrice(price);
-	        product.setDes(des);
-	        product.setImg("img/img-product/"+fileName);
-	        boolean add = ProductDAO.addProduct(product);
-	        if (suc==true && add == true) {
+	        Product p = ProductDAO.getProductById(Integer.parseInt(request.getParameter("id")));
+			String name = request.getParameter("name");
+			int price = Integer.parseInt(request.getParameter("price"));
+			int sale = Integer.parseInt(request.getParameter("sale"));
+			int category = Integer.parseInt(request.getParameter("category"));
+			String des = request.getParameter("des");
+			p.setCategory_id(category);
+			p.setName(name);
+			p.setPrice(price);
+			p.setSales(sale);
+			p.setDes(des);
+			if (fileName != "") {
+				p.setImg("img/img-product/"+fileName);
+			}
+	        boolean check = ProductDAO.updateProduct(p, p.getId());
+	        if ( check == true) {
 	        	response.sendRedirect("http://localhost:8080/Web-2020/AdminProductController");
-	    		
+//	        	request.setAttribute("error", "Cập nhật thành công");
+//				request.getRequestDispatcher("AdminProductController").forward(request, response);
 			}else {
 				out.println("error");
 			}
 
 	}
 	}
-
 	public boolean upoloadFile(InputStream is,String path) {
 		boolean test = false;
 		try {
-			byte[] byt =new byte[is.available()];
+			
 			FileOutputStream fops = new FileOutputStream(path);
 			int b;
 			 while((b=is.read())!=-1) {//Continuously read each byte
@@ -74,7 +80,27 @@ public class AddProductController extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+//		Product p = ProductDAO.getProductById(Integer.parseInt(request.getParameter("id")));
+//		String name = request.getParameter("name");
+//		int price = Integer.parseInt(request.getParameter("price"));
+//		int sale = Integer.parseInt(request.getParameter("sale"));
+//		int category = Integer.parseInt(request.getParameter("category"));
+//		String des = request.getParameter("des");
+//		p.setCategory_id(category);
+//		p.setName(name);
+//		p.setPrice(price);
+//		p.setSales(sale);
+//		p.setDes(des);
+//		boolean check = ProductDAO.updateProduct(p, p.getId());
+//		if(check) {
+//			request.setAttribute("error", "Cập nhật thành công");
+//			request.getRequestDispatcher("AdminProductController").forward(request, response);
+//		}else {
+//			request.setAttribute("error", "Cập nhật thất bại");
+//			request.getRequestDispatcher("AdminProductController").forward(request, response);
+//		}
 		processRequest(request, response);
 	}
+	
 
 }

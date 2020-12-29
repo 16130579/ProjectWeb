@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.Product"%> 
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
@@ -33,7 +34,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="AdminProductController">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -283,6 +284,8 @@
         <button class="btn btn-success btn-xs" data-title="Add" data-toggle="modal" data-target="#add" >Thêm sản phẩm</button>
         
         <div class="col-md-12">
+        <br>
+        <h5 style="color: red;">${error}</h5>
           <br>
         <h4>Quản lý sản phẩm</h4>
         <div class="table-responsive">
@@ -315,8 +318,30 @@
     <td>30</td>
     <td><a href="keycode.html">Xem chi tiết</a></td>
     <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditProductController?id=${p.getId()}"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal"><i class="fas fa-pencil-alt"></i></button></a></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><i class="fas fa-trash"></i></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete${p.getId()}" ><i class="fas fa-trash"></i></button></p></td>
     </tr>
+    <div class="modal fade" id="delete${p.getId()}" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title custom_align" id="Heading" style="margin-right: 32%;">Xóa sản phẩm này</h4>
+      </div>
+          <div class="modal-body">
+       
+       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Bạn có chắc chắn muốn xóa</div>
+       
+      </div>
+      
+        <div class="modal-footer ">
+        <a href="AdminDeleteProduct?id=${p.getId()}"><button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Có</button></a>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Không</button>
+      </div>
+        </div>
+    <!-- /.modal-content --> 
+  </div>
+      <!-- /.modal-dialog --> 
+    </div>
     </c:forEach>
      
    
@@ -394,27 +419,7 @@
     
     
     
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-      <div class="modal-dialog">
-    <div class="modal-content">
-          <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-        <h4 class="modal-title custom_align" id="Heading" style="margin-right: 32%;">Xóa sản phẩm này</h4>
-      </div>
-          <div class="modal-body">
-       
-       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Bạn có chắc chắn muốn xóa</div>
-       
-      </div>
-        <div class="modal-footer ">
-        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Có</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Không</button>
-      </div>
-        </div>
-    <!-- /.modal-content --> 
-  </div>
-      <!-- /.modal-dialog --> 
-    </div>
+    
 
           </div>
 <!-- endmain -->

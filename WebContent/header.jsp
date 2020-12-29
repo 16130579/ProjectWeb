@@ -1,7 +1,9 @@
+<%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@page import="model.User"%>
   <%@page import="dao.UserDAO"%>
+ <%@page import="model.Cart"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -364,14 +366,18 @@ var check = function() {
 				</a>
 				<div class="box-search">
 					<div class="box-search-contain">
-						<input type="text" placeholder="Nhập sản phẩm cần tìm....">
-						<div class="btn-search">
+					<form action="TimKiemController" method="get" id="myform">
+						<input style="outline: none" type="text" placeholder="Nhập sản phẩm cần tìm...." name="name">
+						<div style="position: absolute;left: 57.5%;top: 45%; " class="btn-search" onclick="document.getElementById('myform').submit()">
 							<i class="fas fa-search"></i>
 						</div>
+						
+					</form>	
 					</div>
 				</div>
 				<%
 		User user = (User) session.getAttribute("USER");
+		Map<Integer, Cart> cartShopping = (Map<Integer, Cart>) session.getAttribute("cartShopping");
 		int idUser = 0;
 		if (user != null) {
 			idUser = user.getId();
@@ -654,10 +660,12 @@ var check = function() {
 				</div>
 
 				<%} %>
-				<a href="gioHang.html"><div class="box-item-cart">
+				<a href="LoadGioHang"><div class="box-item-cart">
 						<div class="box-item-cart-contain">
 							<i class="fas fa-shopping-cart"></i> Giỏ hàng <span
-								class="numberItem">0</span>
+								class="numberItem">
+								${sum}
+								</span>
 						</div>
 					</div> </a>
 			</div>

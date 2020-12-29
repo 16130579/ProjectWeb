@@ -31,7 +31,7 @@
             <div class="right-banner">
                 <div class="quick-menu">
                     <ul>
-                        <li><a href="list.html"><i class="fab fa-hotjar"></i> <span>Mua nhiều trong 24h</span></a></li>
+                        <li><a href="ProductController"><i class="fab fa-hotjar"></i> <span>Mua nhiều trong 24h</span></a></li>
                         <li><a href="list.html"><i class="fas fa-award"></i> <span>NỔI BẬT NHẤT</span></a></li>
                         <li><a href="payments.html"><i class="far fa-credit-card"></i> <span>Hình thức thanh toán</span></a></li>
                         <li><a href="huongDanMuaHang.html"><i class="far fa-credit-card"></i> <span>Hướng dẫn</span></a></li>

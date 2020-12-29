@@ -52,7 +52,7 @@ public class DangNhapController extends HttpServlet {
 					session.setAttribute("USER", user);
 					response.sendRedirect("profile.jsp");
 				}else {
-					response.sendRedirect("admin/product.jsp");
+					response.sendRedirect("adminproduct.jsp");
 				}
 			}else {
 				request.setAttribute("errorLogin", "Sai Email hoặc mật khẩu");

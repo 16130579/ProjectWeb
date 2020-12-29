@@ -1,8 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,22 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Category;
-import model.Product;
 import dao.ProductDAO;
+import model.Product;
 
-@WebServlet("/CategoryController")
-public class CategoryController extends HttpServlet {
+
+@WebServlet("/ChiTietSanPham")
+public class ChiTietSanPham extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Category> list = ProductDAO.getListCategory();
-		request.setAttribute("list", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("list.jsp");
+		// TODO Auto-generated method stub
+		int id = Integer.parseInt(request.getParameter("id"));
+		Product p = ProductDAO.getProductById(id);
+		request.setAttribute("product", p);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("product_detail.jsp");
 		dispatcher.forward(request, response);
 	}
 
-	
 
 }

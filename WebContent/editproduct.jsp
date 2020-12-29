@@ -41,7 +41,7 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="index.html">
+				href="AdminProductController">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
 				</div>
@@ -287,12 +287,17 @@
 											</button>
 											<h4 class="modal-title" id="Heading"
 												style="margin-right: 32%;">Thay đổi thông tin</h4>
+											<h6 style="color: red">${error}</h6>
 										</div>
+										<form action="UpdateProduct" method="post" id="myform" enctype="multipart/form-data">
 										<div class="modal-body">
-
 											<div class="form-group">
 												<input class="form-control " type="text"
-													value="<%= p.getName() %>">
+													value="<%= p.getId() %>" name="id" readonly="readonly">
+											</div>
+											<div class="form-group">
+												<input class="form-control " type="text"
+													value="<%= p.getName() %>" name="name">
 											</div>
 											<div class="form-group">
 												<input class="form-control " name="file" type="file"
@@ -301,12 +306,17 @@
 											<div class="form-group">
 
 												<input class="form-control " type="text"
-													value="<%= p.getPrice() %>">
+													value="<%= p.getPrice() %>" name="price">
 											</div>
 											<div class="form-group">
 
 												<input class="form-control " type="text"
-													value="<%= p.getSales() %>">
+													value="<%= p.getSales() %>" name="sale">
+											</div>
+											<div class="form-group">
+
+												<input class="form-control " type="text"
+													value="<%= p.getStatus() %>" name="status">
 											</div>
 											<div class="form-group">
 												<select name="" id="" class="form-control">
@@ -317,26 +327,29 @@
 												</select>
 											</div>
 											<div class="form-group">
-												<input class="form-control " type="text" placeholder="<%= p.getDes() %>">
+												<input class="form-control " name="des" type="text" value="<%= p.getDes() %>">
 											</div>
 											<% ArrayList<Category> listCategory = ProductDAO.getListCategory(); %>
 											<div class="form-group">
-												<select name="" id="" class="form-control">
+												<select class="form-control" name="category">
 												<%for (Category item : listCategory){ %>
-													<option value="<%= item.getId() %>"><%= item.getName() %></option>
+													<option  value="<%= item.getId() %>"><%= item.getName() %></option>
 													<% } %>
 
 												</select>
 											</div>
+											
 										</div>
 										<div class="modal-footer ">
-											<button type="button" class="btn btn-warning btn-lg"
+											<button onclick="document.getElementById('myform').submit()" type="button" class="btn btn-warning btn-lg"
 												style="width: 100%;">
 												<span class="glyphicon glyphicon-ok-sign"></span> Cập nhật
 											</button>
 										</div>
+										</form>
 									</div>
 									<!-- /.modal-content -->
+									
 								</div>
 
 

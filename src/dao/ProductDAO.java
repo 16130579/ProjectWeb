@@ -118,14 +118,54 @@ public class ProductDAO {
 		}
 		return false;
 	}
+	public static boolean deleteProduct(int id) {
+		Connection connection;
+		try {
+			connection = DBConnection.getConnection();
+			String sql = "DELETE FROM product where product_id = ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, id);
+			int rowAffect = preparedStatement.executeUpdate();
+			if (rowAffect == 1) return true;
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	public static ArrayList<Product> getListProductByName(String name){
+		ArrayList<Product> list = new ArrayList<>();
+		Connection connection;
+		try {
+			connection = DBConnection.getConnection();
+			String sql = "SELECT * FROM [product] where product_name LIKE '%"+name+"%'";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				Product product = new Product();
+				product.setId(resultSet.getInt("product_id"));
+				product.setName(resultSet.getNString("product_name"));
+				product.setImg(resultSet.getNString("product_img"));
+				product.setPrice(resultSet.getInt("product_price"));
+				product.setSales(resultSet.getInt("product_sale"));
+				product.setDes(resultSet.getNString("product_des"));
+				product.setStatus(resultSet.getInt("product_status"));
+				product.setCategory_id(resultSet.getInt("category_id"));
+				list.add(product);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	public static void main(String[] args) {
 //		System.out.println(getListCategory().toString());
 //		System.out.println(getListProduct().toString());
 //		Product p = new Product(10, "aaaa", "/ssss", 100000, 15420, "sssssss", 1, 1);
 //		System.out.println(addProduct(p));
-		System.out.println(getProductById(1).toString());
-		Product p = getProductById(17);
-		p.setName("update");
-		System.out.println(updateProduct(p,17));
+//		System.out.println(getProductById(1).toString());
+//		Product p = getProductById(17);
+//		p.setName("update");
+//		System.out.println(updateProduct(p,17));
+		System.out.println(getListProductByName("us").toString());
 	}
 }
