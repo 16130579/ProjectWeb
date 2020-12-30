@@ -238,16 +238,28 @@
 					<div class="sau-hed">
 						
 						<div class="oo2">
-							<span class="oo2-truoc">Tổng tiền</span> <span class="oo2-sau">${total} VND</span>
+							<span class="oo2-truoc">Tổng tiền</span> <span class="oo2-sau" id="total">${total} VND</span>
 						</div>
 						<div class="oo1">
-							<span class="oo1-truoc">Số dư hiện tại</span> <span
-								class="oo1-sau">1.000.000VND</span>
+							<span class="oo1-truoc">Số dư hiện tại</span> 
+							<%if(user!= null){%>
+							<span
+								class="oo1-sau" id="balance"><%= user.getBalance() %> VND</span>
+								<%}else{ %>
+								<span
+								class="oo1-sau">Bạn chưa đăng nhập</span>
+								<%} %>
 						</div>
 						<div class="oo2">
+						<%if(user!= null){ %>
 							<span class="oo2-truoc">Số tiền cần nạp thêm</span><span
-								class="oo2-sau">0VND</span>
+								class="oo2-sau">${needed} VND</span>
+								<%}else{ %>
+								<span class="oo2-truoc">Số tiền cần nạp thêm</span><span
+								class="oo2-sau">0 VND</span>
+								<%} %>
 						</div>
+						
 					</div>
 					<a href="cash.html"><div class="nap-many">
 						<button>Nạp thêm tiền</button>
