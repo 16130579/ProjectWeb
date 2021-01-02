@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,7 +67,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             
             <a class="collapse-item " href="account.html">Account</a>
-            <a class="collapse-item active" href="product.html">Product</a>
+            <a class="collapse-item active" href="AdminProductController">Product</a>
             <a class="collapse-item" href="order.html">Order</a>
           </div>
         </div>
@@ -292,50 +293,48 @@
                    
                    <td>Mã</td>
                      <th>Key Code</th>
+                     <th>Tình trạng</th>
                       <th>Edit</th>
                       
                        <th>Delete</th>
                    </thead>
     <tbody>
     
+    <c:forEach items="${list}" var="item">
     <tr>
-   <td>1</td>
-    <td>HCSAS_ZXXCCMS_SKDMCJS</td>
+   <td>${item.getId()}</td>
+    <td>${item.getKey_code()}</td>
+    <td>${item.getKey_status()}</td>
     <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><i class="fas fa-pencil-alt"></i></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><i class="fas fa-trash"></i></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete${item.getId()}" ><i class="fas fa-trash"></i></button></p></td>
     </tr>
+    <div class="modal fade" id="delete${item.getId()}" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title custom_align" id="Heading" style="margin-right: 32%;">Xóa sản phẩm này</h4>
+      </div>
+          <div class="modal-body">
+       
+       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Bạn có chắc chắn muốn xóa</div>
+       
+      </div>
+        <div class="modal-footer ">
+        <a href="DeleteKeyCode?id=${item.getId()}"><button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Có</button></a>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Không</button>
+      </div>
+        </div>
+    <!-- /.modal-content --> 
+  </div>
+      <!-- /.modal-dialog --> 
+    </div>
+    </c:forEach>
+ 
     
- <tr>
-   <td>2</td>
-    <td>SCASD_ZXXCCMS_SKDMCJS</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><i class="fas fa-pencil-alt"></i></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><i class="fas fa-trash"></i></button></p></td>
-    </tr>
     
     
- <tr>
-   <td>3</td>
-    <td>FFFF-SSSSS</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><i class="fas fa-pencil-alt"></i></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><i class="fas fa-trash"></i></button></p></td>
-    </tr>
-    
-    
-    
-<tr>
-   <td>4</td>
-    <td>MJHNHHD-DJJMDJ</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><i class="fas fa-pencil-alt"></i></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><i class="fas fa-trash"></i></button></p></td>
-    </tr>
-    
-    
-<tr>
-   <td>5</td>
-    <td>MKJBGFTY</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><i class="fas fa-pencil-alt"></i></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><i class="fas fa-trash"></i></button></p></td>
-    </tr>
+
     
    
     
@@ -367,19 +366,29 @@
 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
       <div class="modal-dialog">
     <div class="modal-content">
+    <form action="AddKeyCode" method="get" id="code">
           <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         <h4 class="modal-title" id="Heading" style="margin-right: 38%;">Thêm Key</h4>
       </div>
           <div class="modal-body">
             <div class="form-group">
-        <input class="form-control " type="text" placeholder="Nhập mã Key">
+        <input class="form-control " name="name" type="text" placeholder="Nhập mã Key">
         </div>
-          
+          <div class="form-group">
+          <select name="status" class="form-control">
+        
+        <option value="0">Chưa đăng bán</option>
+        <option value="1">Đang bán</option>
+        <option value="2">Đã bán</option>
+        
+        </select>
+          </div>
       </div>
           <div class="modal-footer ">
-        <button type="button" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Thêm</button>
+        <button type="button" onclick="document.getElementById('code').submit()" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Thêm</button>
       </div>
+      </form>
         </div>
     <!-- /.modal-content --> 
   </div>
@@ -391,19 +400,28 @@
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
       <div class="modal-dialog">
     <div class="modal-content">
+    <form action="EditKeyCode" method="get" id="editcode">
           <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         <h4 class="modal-title" id="Heading" style="margin-right: 32%;">Thay đổi thông tin</h4>
       </div>
           <div class="modal-body">
             <div class="form-group">
-        <input class="form-control " type="text" value="MJHNHHD-DJJMDJ">
+        <input class="form-control" name="keycode" type="text" value="MJHNHHD-DJJMDJ">
+        </div>
+        <div class="form-group">
+        <select name="status">
+        
+        <option></option>
+        
+        </select>
         </div>
           
       </div>
           <div class="modal-footer ">
-        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Cập nhật</button>
+        <button type="button" onclick="document.getElementById('editcode').submit()" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Cập nhật</button>
       </div>
+      </form>
         </div>
     <!-- /.modal-content --> 
   </div>
@@ -412,27 +430,7 @@
     
     
     
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-      <div class="modal-dialog">
-    <div class="modal-content">
-          <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-        <h4 class="modal-title custom_align" id="Heading" style="margin-right: 32%;">Xóa sản phẩm này</h4>
-      </div>
-          <div class="modal-body">
-       
-       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Bạn có chắc chắn muốn xóa</div>
-       
-      </div>
-        <div class="modal-footer ">
-        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Có</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Không</button>
-      </div>
-        </div>
-    <!-- /.modal-content --> 
-  </div>
-      <!-- /.modal-dialog --> 
-    </div>
+    
 
           </div>
 <!-- endmain -->

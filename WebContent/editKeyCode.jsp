@@ -275,86 +275,38 @@
 					<div class="container">
 						<div class="row">
 
-				<%Product p = (Product)request.getAttribute("product"); %>
+			
 							<div class="col-md-6">
 
 								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal"
-												aria-hidden="true">
-												<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-											</button>
-											<h4 class="modal-title" id="Heading"
-												style="margin-right: 32%;">Thay đổi thông tin</h4>
-											<h6 style="color: red">${error}</h6>
-										</div>
-										<form action="UpdateProduct" method="post" id="myform" enctype="multipart/form-data">
-										<div class="modal-body">
-											<div class="form-group">
-												<input class="form-control " type="text"
-													value="<%= p.getId() %>" name="id" readonly="readonly">
-											</div>
-											<div class="form-group">
-												<input class="form-control " type="text"
-													value="<%= p.getName() %>" name="name">
-											</div>
-											<div class="form-group">
-												<input class="form-control " name="file" type="file"
-													placeholder="Tải hình ảnh">
-											</div>
-											<div class="form-group">
-
-												<input class="form-control " type="text"
-													value="<%= p.getPrice() %>" name="price">
-											</div>
-											<div class="form-group">
-
-												<input class="form-control " type="text"
-													value="<%= p.getSales() %>" name="sale" placeholder="Khuyến mãi">
-											</div>
-											<div class="form-group">
-
-												<input class="form-control " type="text"
-													value="<%= p.getStatus() %>" name="status">
-											</div>
-											<div class="form-group">
-												<select name="" id="" class="form-control">
-												
-													<option value=""></option>
-													
-
-												</select>
-											</div>
-											<div class="form-group">
-												<input class="form-control " name="des" type="text" value="<%= p.getDes() %>">
-											</div>
-											<% ArrayList<Category> listCategory = ProductDAO.getListCategory(); %>
-											<div class="form-group">
-												<select class="form-control" name="category">
-												
-												<%for (Category item : listCategory){ %>
-												<%if(p.getCategory_id()==item.getId()){ %>
-												<option value="<%= p.getCategory_id() %>" selected><%= item.getName() %></option>
-												<%}else{ %>
-													<option  value="<%= item.getId() %>"><%= item.getName() %></option>
-													<% }} %>
-
-												</select>
-											</div>
-											
-										</div>
-										<div class="modal-footer ">
-											<button onclick="document.getElementById('myform').submit()" type="button" class="btn btn-warning btn-lg"
-												style="width: 100%;">
-												<span class="glyphicon glyphicon-ok-sign"></span> Cập nhật
-											</button>
-										</div>
-										</form>
-									</div>
-									<!-- /.modal-content -->
-									
-								</div>
+    <div class="modal-content">
+    <form action="EditKeyCode" method="get" id="editcode">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title" id="Heading" style="margin-right: 32%;">Thay đổi thông tin</h4>
+      </div>
+          <div class="modal-body">
+            <div class="form-group">
+        <input class="form-control" name="keycode" type="text" value="MJHNHHD-DJJMDJ">
+        </div>
+        <div class="form-group">
+        <select name="status" class="form-control">
+        
+        <option value="0">Chưa đăng bán</option>
+        <option value="1">Đang bán</option>
+        <option value="2">Đã bán</option>
+        
+        </select>
+        </div>
+          
+      </div>
+          <div class="modal-footer ">
+        <button type="button" onclick="document.getElementById('editcode').submit()" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Cập nhật</button>
+      </div>
+      </form>
+        </div>
+    <!-- /.modal-content --> 
+  </div>
 
 
 							</div>
@@ -362,56 +314,7 @@
 					</div>
 					<!-- add -->
 
-					<!-- endadd -->
-					<div class="modal" id="edit" tabindex="-1" role="dialog"
-						aria-labelledby="edit" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"
-										aria-hidden="true">
-										<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-									</button>
-									<h4 class="modal-title" id="Heading" style="margin-right: 32%;">Thay
-										đổi thông tin</h4>
-								</div>
-								<div class="modal-body">
-
-									<div class="form-group">
-										<input class="form-control " type="text" placeholder="Netflit">
-									</div>
-									<div class="form-group">
-										<button style="margin-left: 10px">Tải hình ảnh</button>
-										<!-- <input class="form-control " type="text" placeholder="img"> -->
-									</div>
-									<div class="form-group">
-
-										<input class="form-control " type="text" placeholder="190,000">
-									</div>
-									<div class="form-group">
-										<input class="form-control " type="text" placeholder="30">
-									</div>
-									<div class="form-group">
-										<select name="" id="" class="form-control">
-											<option value="">Steam</option>
-											<option value="" selected>Software</option>
-											<option value="">Televisiton</option>
-
-										</select>
-									</div>
-								</div>
-								<div class="modal-footer ">
-									<button type="button" class="btn btn-warning btn-lg"
-										style="width: 100%;">
-										<span class="glyphicon glyphicon-ok-sign"></span> Cập nhật
-									</button>
-								</div>
-							</div>
-							<!-- /.modal-content -->
-						</div>
-						<!-- /.modal-dialog -->
-					</div>
-
+					
 
 
 					<div class="modal fade" id="delete" tabindex="-1" role="dialog"

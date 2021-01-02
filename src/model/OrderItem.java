@@ -6,7 +6,7 @@ int order_id;
 int product_id;
 String product_name;
 String product_key;
-String product_price;
+int product_price;
 int amount;
 
 public OrderItem() {
@@ -42,10 +42,10 @@ public String getProduct_key() {
 public void setProduct_key(String product_key) {
 	this.product_key = product_key;
 }
-public String getProduct_price() {
+public int getProduct_price() {
 	return product_price;
 }
-public void setProduct_price(String product_price) {
+public void setProduct_price(int product_price) {
 	this.product_price = product_price;
 }
 public int getAmount() {
@@ -54,7 +54,7 @@ public int getAmount() {
 public void setAmount(int amount) {
 	this.amount = amount;
 }
-public OrderItem(int id, int order_id, int product_id, String product_name, String product_key, String product_price,
+public OrderItem(int id, int order_id, int product_id, String product_name, String product_key, int product_price,
 		int amount) {
 	super();
 	this.id = id;

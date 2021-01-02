@@ -238,7 +238,7 @@
 					<div class="sau-hed">
 						
 						<div class="oo2">
-							<span class="oo2-truoc">Tổng tiền</span> <span class="oo2-sau" id="total">${total} VND</span>
+							<span class="oo2-truoc">Tổng tiền</span> <span class="oo2-sau" id="total">${total} VNĐ (${thanhtoan} USD)</span>
 						</div>
 						<div class="oo1">
 							<span class="oo1-truoc">Số dư hiện tại</span> 
@@ -271,7 +271,38 @@
 					<a href="ProductController"><button>Tiếp tục mua hàng</button></a>
 				</div>
 				<div class="mua">
-					<button>Thanh toán</button>
+				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+
+            <!-- Enter seller's email address -->
+            <input type="hidden" name="business" value="your_email@gmail.com">
+
+            <!-- Variable cmd shows PayPal that this is a payment button -->
+            <input type="hidden" name="cmd" value="_xclick">
+
+            <!-- Bill information -->
+            <input type="hidden" name="item_name" value="bill_name">
+			<!--Total cost ($)-->
+            <input type="hidden" name="amount" placeholder="Total bill" value="${thanhtoan}">
+
+			<!--Type of Currency-->
+            <input type="hidden" name="currency_code" value="USD">
+			<!--Redirect to this link if payment is successfully transfered-->
+            <input type="hidden" name="return" value="http://localhost:8080/Web-2020/ThanhToan">
+			<!--Redirect to this link if fail-->
+            <input type="hidden" name="cancel_return" value="http://localhost:8080/Web-2020/ProductController">
+            <!-- Custom button -->
+            <% User needed = (User)session.getAttribute("check"); %>
+            <% int money=needed.getBalance(); %>
+            <% if (user != null && money == 0){ %>
+            <button>Thanh toán</button>
+            
+             <%}else if(money<0){ %>
+             <h5>Bạn không đủ tiền trong tài khoản</h5>
+             <%}else if(user == null){ %>
+             <button>Thanh toán</button>
+             <%} %>
+	</form>
+					
 				</div>
 			</div>
 		</div>

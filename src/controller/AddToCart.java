@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.ProductDAO;
 import model.Cart;
+import model.Order;
 import model.Product;
 import model.User;
 
@@ -52,10 +53,18 @@ public class AddToCart extends HttpServlet {
 				if (need > 0) {
 					need = 0;
 				}
+				double vnd = total / 22000;
+				request.setAttribute("thanhtoan", vnd);
+				User check = new User();
+				check.setBalance(need);
+				session.setAttribute("check", check);
 				request.setAttribute("needed", need);
 				session.setAttribute("cartShopping", cartShopping);
 
 				request.setAttribute("cart", cartShopping);
+				Order order = new Order();
+				order.setPrice(total);
+				session.setAttribute("order", order);
 				request.setAttribute("total", total);
 				request.setAttribute("sum", sum);
 				request.getRequestDispatcher("gioHang.jsp").forward(request, response);
@@ -81,7 +90,15 @@ public class AddToCart extends HttpServlet {
 					if (need > 0) {
 						need = 0;
 					}
+					double vnd = total / 22000;
+					request.setAttribute("thanhtoan", vnd);
+					User check = new User();
+					check.setBalance(need);
+					session.setAttribute("check", check);
 					request.setAttribute("needed", need);
+					Order order = new Order();
+					order.setPrice(total);
+					session.setAttribute("order", order);
 					request.setAttribute("sum", sum);
 					request.setAttribute("total", total);
 
@@ -99,7 +116,15 @@ public class AddToCart extends HttpServlet {
 					if (need > 0) {
 						need = 0;
 					}
+					double vnd = total / 22000;
+					request.setAttribute("thanhtoan", vnd);
+					User check = new User();
+					check.setBalance(need);
+					session.setAttribute("check", check);
 					request.setAttribute("needed", need);
+					Order order = new Order();
+					order.setPrice(total);
+					session.setAttribute("order", order);
 					request.setAttribute("sum", sum);
 					request.setAttribute("total", total);
 
@@ -125,10 +150,16 @@ public class AddToCart extends HttpServlet {
 				}
 //				int need = user.getBalance();
 //				request.setAttribute("needed", need);
+				double vnd = total / 22000;
+				request.setAttribute("thanhtoan", vnd);
 				session.setAttribute("cartShopping", cartShopping);
 
 				request.setAttribute("cart", cartShopping);
+				Order order = new Order();
+				order.setPrice(total);
+				session.setAttribute("order", order);
 				request.setAttribute("total", total);
+				
 				request.setAttribute("sum", sum);
 				request.getRequestDispatcher("gioHang.jsp").forward(request, response);
 			} else {
@@ -147,8 +178,13 @@ public class AddToCart extends HttpServlet {
 						total += item.getPrice();
 						sum += item.getAmount();
 					}
+					double vnd = total / 22000;
+					request.setAttribute("thanhtoan", vnd);
 //					int need = user.getBalance();
 //					request.setAttribute("needed", need);
+					Order order = new Order();
+					order.setPrice(total);
+					session.setAttribute("order", order);
 					request.setAttribute("sum", sum);
 					request.setAttribute("total", total);
 
@@ -161,8 +197,13 @@ public class AddToCart extends HttpServlet {
 						total += item.getPrice();
 						sum += item.getAmount();
 					}
+					double vnd = total / 22000;
+					request.setAttribute("thanhtoan", vnd);
 //					int need = user.getBalance();
 //					request.setAttribute("needed", need);
+					Order order = new Order();
+					order.setPrice(total);
+					session.setAttribute("order", order);
 					request.setAttribute("sum", sum);
 					request.setAttribute("total", total);
 

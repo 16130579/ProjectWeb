@@ -69,7 +69,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             
             <a class="collapse-item " href="account.html">Account</a>
-            <a class="collapse-item active" href="product.html">Product</a>
+            <a class="collapse-item active" href="AdminProductController">Product</a>
             <a class="collapse-item" href="order.html">Order</a>
           </div>
         </div>
@@ -316,7 +316,7 @@
     <td>${p.getName()}</td>
     <td>${p.getPrice()} đ</td>
     <td>30</td>
-    <td><a href="keycode.html">Xem chi tiết</a></td>
+    <td><a href="LoadKeyCode?id=${p.getId()}">Xem chi tiết</a></td>
     <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditProductController?id=${p.getId()}"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal"><i class="fas fa-pencil-alt"></i></button></a></p></td>
     <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete${p.getId()}" ><i class="fas fa-trash"></i></button></p></td>
     </tr>

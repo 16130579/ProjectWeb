@@ -559,13 +559,13 @@ var check = function() {
 													<span class="close4">&times;</span>
 													<h1 class="h4 text-gray-900 mb-4">Quên mật khẩu</h1>
 												</div>
-												<form class="user">
+												<form class="user" id="forr" method="post" action="QuenMatKhau">
 													<div class="form-group">
 														<input type="email" class="form-control form-control-user"
-															id="exampleInputEmail" placeholder="Email Address">
+															id="exampleInputEmail" placeholder="Email Address" name="forget">
 													</div>
 
-													<a type="submit" class="btn btn-primary btn-user btn-block"
+													<a onclick="document.getElementById('forr').submit()" class="btn btn-primary btn-user btn-block"
 														style="color: white"> Gửi Email Xác nhận </a>
 
 
