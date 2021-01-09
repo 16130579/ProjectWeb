@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Cart;
+import model.Order;
 
 
 @WebServlet("/DeleteItemCart")
@@ -30,6 +31,11 @@ public class DeleteItemCart extends HttpServlet {
 			total += item.getPrice();
 			sum +=item.getAmount();
 		}
+		double vnd = total / 22000;
+		request.setAttribute("thanhtoan", vnd);
+		Order order = new Order();
+		order.setPrice(total);
+		session.setAttribute("order", order);
 		request.setAttribute("sum", sum);
 		request.setAttribute("total", total);
 //		session.setAttribute("cartShopping", cartShopping);

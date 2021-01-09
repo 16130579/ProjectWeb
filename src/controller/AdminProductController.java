@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.KeyDAO;
 import dao.ProductDAO;
 import model.Product;
 
@@ -26,6 +27,7 @@ public class AdminProductController extends HttpServlet {
 		ArrayList<Product> list = ProductDAO.getListProduct();
 //		list.add(new Product(1, "Netflix", "img/img-product/netflix1.png", 190000, 165000, "Mô tả"));
 //		list.add(new Product(2, "Netflix", "img/img-product/netflix1.png", 190000, 165000, "Mô tả"));
+//		int count = KeyDAO.countProductById(id)
 		request.setAttribute("list", list);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("adminproduct.jsp");

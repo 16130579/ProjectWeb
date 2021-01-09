@@ -298,7 +298,7 @@
             
              <%}else if(money<0){ %>
              <h5>Bạn không đủ tiền trong tài khoản</h5>
-             <%}else if(user == null){ %>
+             <%}else if(money == 0){ %>
              <button>Thanh toán</button>
              <%} %>
 	</form>

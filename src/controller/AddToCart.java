@@ -135,6 +135,8 @@ public class AddToCart extends HttpServlet {
 				request.getRequestDispatcher("gioHang.jsp").forward(request, response);
 			}
 		} else {
+			//user = null 
+			
 			if (session.getAttribute("cartShopping") == null) {
 
 				Map<Integer, Cart> cartShopping = new HashMap<>();
@@ -157,6 +159,9 @@ public class AddToCart extends HttpServlet {
 				request.setAttribute("cart", cartShopping);
 				Order order = new Order();
 				order.setPrice(total);
+				User check = new User();
+				check.setBalance(0);
+				session.setAttribute("check", check);
 				session.setAttribute("order", order);
 				request.setAttribute("total", total);
 				
@@ -180,10 +185,11 @@ public class AddToCart extends HttpServlet {
 					}
 					double vnd = total / 22000;
 					request.setAttribute("thanhtoan", vnd);
-//					int need = user.getBalance();
-//					request.setAttribute("needed", need);
 					Order order = new Order();
 					order.setPrice(total);
+					User check = new User();
+					check.setBalance(0);
+					session.setAttribute("check", check);
 					session.setAttribute("order", order);
 					request.setAttribute("sum", sum);
 					request.setAttribute("total", total);
@@ -203,6 +209,9 @@ public class AddToCart extends HttpServlet {
 //					request.setAttribute("needed", need);
 					Order order = new Order();
 					order.setPrice(total);
+					User check = new User();
+					check.setBalance(0);
+					session.setAttribute("check", check);
 					session.setAttribute("order", order);
 					request.setAttribute("sum", sum);
 					request.setAttribute("total", total);

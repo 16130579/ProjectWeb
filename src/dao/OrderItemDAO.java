@@ -87,4 +87,8 @@ public class OrderItemDAO {
 		
 		return list;
 	}
+	public static void main(String[] args) {
+		OrderItem orderItem = new OrderItem(0, 6, 1, "thanh", "aaaa", 30000, 3);
+		System.out.println(addOrderItem(orderItem));
+	}
 }

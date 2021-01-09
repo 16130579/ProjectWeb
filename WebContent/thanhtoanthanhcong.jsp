@@ -43,12 +43,12 @@
                 box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.29);" src="img/img-product/product-1.jpg" alt="Sản phẩm Among us"> -->
             </div>
             <div class="name-product">
-                Mã đơn hàng: <span>1000120</span> <br>
-                Tổng giá trị: <span>400.000đ</span> <br>
+                
+                <p>Tổng giá trị:</p> <span>${tong} VNĐ</span> <br>
                 
             </div>
             <div class="btn-succes-payment">
-                <a href="index.html"><button type="button" class="btn btn-primary">Quay lại trang mua hàng</button></a>
+                <a href="index.jsp"><button type="button" class="btn btn-primary">Quay lại trang mua hàng</button></a>
             </div>
         </div>
      <%@include file="footer.jsp" %>

@@ -24,9 +24,14 @@ public class LoadGioHang extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		Map<Integer, Cart> cartShopping = (Map<Integer, Cart>) session.getAttribute("cartShopping");
-		session.setAttribute("cartShopping", cartShopping);
-		request.setAttribute("cart", cartShopping);
-		request.getRequestDispatcher("gioHang.jsp").forward(request, response);
+		if (cartShopping != null) {
+			session.setAttribute("cartShopping", cartShopping);
+			request.setAttribute("cart", cartShopping);
+			request.getRequestDispatcher("gioHang.jsp").forward(request, response);
+		}else {
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		}
+		
 	}
 
 

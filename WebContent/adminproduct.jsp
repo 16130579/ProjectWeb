@@ -1,3 +1,4 @@
+<%@page import="dao.KeyDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Product"%> 
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -300,7 +301,7 @@
                     
                      <th>Tên</th>
                      <th>Giá</th>
-                     <th>Số lượng</th>
+                     
                      <th>Key Code</th>
                       <th>Edit</th>
                       
@@ -315,7 +316,7 @@
     
     <td>${p.getName()}</td>
     <td>${p.getPrice()} đ</td>
-    <td>30</td>
+    
     <td><a href="LoadKeyCode?id=${p.getId()}">Xem chi tiết</a></td>
     <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditProductController?id=${p.getId()}"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal"><i class="fas fa-pencil-alt"></i></button></a></p></td>
     <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete${p.getId()}" ><i class="fas fa-trash"></i></button></p></td>
