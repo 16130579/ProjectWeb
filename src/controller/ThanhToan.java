@@ -101,6 +101,7 @@ public class ThanhToan extends HttpServlet {
 			order.setStatus(1);
 			order.setUser_id(user.getId());
 			int check=OrderDAO.addOrder(order);
+			Map<String, String> redem = new HashMap<>();
 			Map<Integer, Cart> cartShopping = (Map<Integer, Cart>) session.getAttribute("cartShopping");
 			for (Map.Entry<Integer, Cart> item : cartShopping.entrySet()) {
 				int id = item.getKey();
@@ -110,16 +111,16 @@ public class ThanhToan extends HttpServlet {
 				orderItem.setProduct_id(id);
 				ArrayList<Key> Listkey= KeyDAO.getKeyByProductIdAmount(id, cart.getAmount());
 				if (Listkey.size() < cart.getAmount()) {
-					PrintWriter out = response.getWriter();
-					response.setCharacterEncoding("UTF-8");
-					out.print("Sản phẩm " + (ProductDAO.getProductById(id)).getName() + " không còn đủ hàng");
+					String hang = (ProductDAO.getProductById(id)).getName();
+					request.setAttribute("hang", hang);
+					request.getRequestDispatcher("hethang.jsp").forward(request, response);
 				}else {
 				for (Key key : Listkey) {
 					orderItem.setProduct_key(key.getKey_code());
 					orderItem.setProduct_name((ProductDAO.getProductById(id)).getName());
 					orderItem.setProduct_price((ProductDAO.getProductById(id)).getPrice());
 					orderItem.setAmount(1);
-					
+					redem.put(key.getKey_code(),orderItem.getProduct_name());
 					boolean checkItem = OrderItemDAO.addOrderItem(orderItem);
 					KeyDAO.updateKeyStatus(2, key.getId());
 				}

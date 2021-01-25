@@ -241,8 +241,7 @@
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> <span
-								class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie
-									Luna</span> <img class="img-profile rounded-circle"
+								class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span> <img class="img-profile rounded-circle"
 								src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
 						</a> <!-- Dropdown - User Information -->
 							<div
@@ -484,7 +483,7 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="login.html">Logout</a>
+					<a class="btn btn-primary" href="index.jsp">Logout</a>
 				</div>
 			</div>
 		</div>

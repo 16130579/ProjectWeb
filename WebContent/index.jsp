@@ -22,24 +22,24 @@
                 
                 <div class="catagory-item">
                     <ul>
-                        <li><a href="ProductController"><i class="fab fa-steam-symbol"></i> <span>Game trên Stream</span></a> </li>
-                        <li><a href="ProductController"><i class="fas fa-trophy"></i> <span>PUGB</span></a> </li>
-                        <li> <a href="ProductController"><i class="fab fa-diaspora"></i> <span>Game trên Origin</span></a> </li>
-                        <li><a href="ProductController"><i class="fas fa-wallet"></i> <span>Stream Wallet</span></a> </li>
-                        <li><a href="ProductController"><i class="fas fa-mobile-alt"></i> <span>Nạp game mobile</span></a></li>
-                        <li><a href="ProductController"><i class="fas fa-broadcast-tower"></i><span>Gói Data Mobile</span></a></li>
-                        <li><a href="ProductController"><i class="fab fa-google-play"></i><span>Google Play, iTunes</span></a></li>
-                        <li><a href="ProductController"><i class="fas fa-magic"></i><span>Tiện ích</span></a></li>
-                        <li><a href="ProductController"><i class="fas fa-wallet"></i><span>Nintendo Eshop Card</span></a></li>
-                        <li><a href="ProductController"><i class="fab fa-xbox"></i><span>Xbox Gift Card</span></a></li>
+                        <li><a href="listproduct.jsp"><i class="fab fa-steam-symbol"></i> <span>Game trên Stream</span></a> </li>
+                        <li><a href="listproduct.jsp"><i class="fas fa-trophy"></i> <span>PUGB</span></a> </li>
+                        <li> <a href="listproduct.jsp"><i class="fab fa-diaspora"></i> <span>Game trên Origin</span></a> </li>
+                        <li><a href="listproduct.jsp"><i class="fas fa-wallet"></i> <span>Stream Wallet</span></a> </li>
+                        <li><a href="listproduct.jsp"><i class="fas fa-mobile-alt"></i> <span>Nạp game mobile</span></a></li>
+                        <li><a href="listproduct.jsp"><i class="fas fa-broadcast-tower"></i><span>Gói Data Mobile</span></a></li>
+                        <li><a href="listproduct.jsp"><i class="fab fa-google-play"></i><span>Google Play, iTunes</span></a></li>
+                        <li><a href="listproduct.jsp"><i class="fas fa-magic"></i><span>Tiện ích</span></a></li>
+                        <li><a href="listproduct.jsp"><i class="fas fa-wallet"></i><span>Nintendo Eshop Card</span></a></li>
+                        <li><a href="listproduct.jsp"><i class="fab fa-xbox"></i><span>Xbox Gift Card</span></a></li>
                     </ul>   
                 </div>
             </div>
             <div class="right-banner">
                 <div class="quick-menu">
                     <ul>
-                        <li><a href="ProductController"><i class="fab fa-hotjar"></i> <span>Mua nhiều trong 24h</span></a></li>
-                        <li><a href="ProductController"><i class="fas fa-award"></i> <span>NỔI BẬT NHẤT</span></a></li>
+                        <li><a href="listproduct.jsp"><i class="fab fa-hotjar"></i> <span>Mua nhiều trong 24h</span></a></li>
+                        <li><a href="listproduct.jsp"><i class="fas fa-award"></i> <span>NỔI BẬT NHẤT</span></a></li>
                         <li><a href="payments.html"><i class="far fa-credit-card"></i> <span>Hình thức thanh toán</span></a></li>
                         <li><a href="huongDanMuaHang.html"><i class="far fa-credit-card"></i> <span>Hướng dẫn</span></a></li>
                     </ul>

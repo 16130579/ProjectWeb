@@ -1,7 +1,5 @@
-<%@page import="dao.ProductDAO"%>
-<%@page import="java.util.ArrayList"%>
+
 <%@page import="model.Product"%> 
-<%@page import="model.Category"%> 
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -214,61 +212,22 @@
 		
 		<div id="main" class="container">
 			<div>
-				
+		
 			</div>
 			<div class="row">
-			<% ArrayList<Product> arr = ProductDAO.getListProduct(); 
-			int start = 0,end = 8;
-			if(arr.size()<9){
-				end = arr.size();
-			}
-			if(request.getParameter("start")!=null){
-				start = Integer.parseInt(request.getParameter("start"));
-			}
-			if(request.getParameter("end")!=null){
-				end = Integer.parseInt(request.getParameter("end"));
-			}
-			ArrayList<Product> list = ProductDAO.getListByPage(arr, start, end);
-			
-			%>
-				<% for(Product item : list){ %>
+				<c:forEach items="${list}" var="p">
 				<div class="col-3">
 					<div class="productS">
-						<a href="ChiTietSanPham?id=<%=item.getId()%>"><img src="<%=item.getImg() %>" alt="" width="215" height="100"></a>
-						<p><%=item.getName() %></p>
-						<p><%=item.getPrice() %>đ</p>
-						<a href="AddToCart?id=<%=item.getId()%>"><svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-cart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<a href="ChiTietSanPham?id=${p.getId()}"><img src="${p.getImg()}" alt="" width="215" height="100"></a>
+						<p>${p.getName()}</p>
+						<p>${p.getPrice()}đ</p>
+						<a href="AddToCart?id=${p.getId()}"><svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-cart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 							<path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
 						</svg></a>
 						<a href="gioHang.html"><div class="item-btn" style="margin-top: 10px;margin-bottom: 10px;">Mua ngay</div></a>
 					</div>
 				</div>
-				<%} %>
-			</div>
-			<br>
-			 <div class="container" style="margin-left: 80%;">
-            
-        
-			<ul class="pagination">
-			<%
-			int a, b;
-			int limit = arr.size() / 9;
-			if(limit*9<arr.size()){
-				limit += 1;
-			}
-			for (int i = 1 ; i <= limit; i++){
-				a = (i-1)*9;
-				b = i*9;
-				if(b > arr.size()){
-					b = arr.size();
-				}
-			
-			
-			%>
-			<li class="page-item active"><a class="page-link" href="listproduct.jsp?start=<%=a%>&end=<%=b%>"><%=i %></a></li>
-			<%} %>
-			<li>
-			</ul>
+				</c:forEach>
 			</div>
 		</div>
 		 <%@include file="footer.jsp" %>
@@ -320,3 +279,4 @@
 						</script>
 					</body>
 				</html>
+

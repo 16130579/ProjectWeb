@@ -49,8 +49,8 @@ public class DangKyController extends HttpServlet {
 				}
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}else {
-				request.setAttribute("error", "Email đã tồn tại");
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				request.setAttribute("errorLogin", "Email đã tồn tại");
+				request.getRequestDispatcher("test.jsp").forward(request, response);
 			}
 			
 		} catch (NoSuchAlgorithmException e) {

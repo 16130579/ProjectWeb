@@ -50,13 +50,13 @@ public class DangNhapController extends HttpServlet {
 				if (user.getRole() == 1) {
 					HttpSession session = request.getSession();
 					session.setAttribute("USER", user);
-					response.sendRedirect("profile.jsp");
+					response.sendRedirect("index.jsp");
 				}else {
 					response.sendRedirect("AdminProductController");
 				}
 			}else {
 				request.setAttribute("errorLogin", "Sai Email hoặc mật khẩu");
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				request.getRequestDispatcher("test.jsp").forward(request, response);
 			}
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block

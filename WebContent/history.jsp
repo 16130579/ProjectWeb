@@ -161,7 +161,7 @@
 								<b>Nạp tiền</b><br> Nạp thêm tiền vào tài khoản
 							</p>
 						</div>
-					</div> </a> <a href="Changepassword.jsp"><div class="inactive">
+					</div> </a> <a href="ChangePassword.jsp"><div class="inactive">
 						<i class="fas fa-key fa-2x"
 							style="color: #ad4025; margin-left: 20px"></i>
 						<div>

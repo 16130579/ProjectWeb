@@ -231,6 +231,7 @@ function validate() {
     if(password1 == password2) {
        $("#validate-status").text("Xác nhận mật khẩu thành công");
        $("#Submit").css("background", "#007bff");
+       $("#Submit").prop('disabled', false);
        $("#validate-status").css("color", "green");
     }
     else {
