@@ -67,6 +67,7 @@ public class AddToCart extends HttpServlet {
 				session.setAttribute("order", order);
 				request.setAttribute("total", total);
 				request.setAttribute("sum", sum);
+				session.setAttribute("sum", sum);
 				request.getRequestDispatcher("gioHang.jsp").forward(request, response);
 			} else {
 				Map<Integer, Cart> cartShopping = (Map<Integer, Cart>) session.getAttribute("cartShopping");
@@ -100,6 +101,7 @@ public class AddToCart extends HttpServlet {
 					order.setPrice(total);
 					session.setAttribute("order", order);
 					request.setAttribute("sum", sum);
+					session.setAttribute("sum", sum);
 					request.setAttribute("total", total);
 
 				} else {
@@ -126,6 +128,7 @@ public class AddToCart extends HttpServlet {
 					order.setPrice(total);
 					session.setAttribute("order", order);
 					request.setAttribute("sum", sum);
+					session.setAttribute("sum", sum);
 					request.setAttribute("total", total);
 
 				}
@@ -166,6 +169,7 @@ public class AddToCart extends HttpServlet {
 				request.setAttribute("total", total);
 				
 				request.setAttribute("sum", sum);
+				session.setAttribute("sum", sum);
 				request.getRequestDispatcher("gioHang.jsp").forward(request, response);
 			} else {
 				Map<Integer, Cart> cartShopping = (Map<Integer, Cart>) session.getAttribute("cartShopping");
@@ -192,6 +196,7 @@ public class AddToCart extends HttpServlet {
 					session.setAttribute("check", check);
 					session.setAttribute("order", order);
 					request.setAttribute("sum", sum);
+					session.setAttribute("sum", sum);
 					request.setAttribute("total", total);
 
 				} else {
@@ -214,6 +219,7 @@ public class AddToCart extends HttpServlet {
 					session.setAttribute("check", check);
 					session.setAttribute("order", order);
 					request.setAttribute("sum", sum);
+					session.setAttribute("sum", sum);
 					request.setAttribute("total", total);
 
 				}

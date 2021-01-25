@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import controller.DBConnection;
 import model.Category;
 import model.Key;
+import model.Order;
 import model.OrderItem;
 import model.Product;
 
@@ -87,8 +88,50 @@ public class OrderItemDAO {
 		
 		return list;
 	}
+	public static ArrayList<OrderItem> getListOrderById(int id){
+		ArrayList<OrderItem> list = new ArrayList<>();
+		Connection connection;
+		try {
+			connection = DBConnection.getConnection();
+			String sql = "SELECT * FROM [orderDetail] where order_id = ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, id);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				OrderItem order = new OrderItem();
+				order.setId(resultSet.getInt("id"));
+				order.setOrder_id(resultSet.getInt("order_id"));
+				order.setProduct_name(resultSet.getNString("product_name"));
+				order.setProduct_key(resultSet.getNString("product_key"));
+				order.setProduct_price(resultSet.getInt("product_price"));
+				list.add(order);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public static boolean deleteOrderItemByOder(int id) {
+		Connection connection;
+		try {
+			connection = DBConnection.getConnection();
+			String sql = "DELETE FROM [orderDetail] where order_id = ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, id);
+			int rowAffect = preparedStatement.executeUpdate();
+			if (rowAffect >= 1) return true;
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	public static void main(String[] args) {
-		OrderItem orderItem = new OrderItem(0, 6, 1, "thanh", "aaaa", 30000, 3);
-		System.out.println(addOrderItem(orderItem));
+//		OrderItem orderItem = new OrderItem(0, 6, 1, "thanh", "aaaa", 30000, 3);
+//		System.out.println(addOrderItem(orderItem));
+//		ArrayList<OrderItem> list = getListOrderById(1021);
+//		for (OrderItem orderItem : list) {
+//			System.out.println(orderItem.toString());
+//		}
+		System.out.println(deleteOrderItemByOder(1019));
 	}
 }

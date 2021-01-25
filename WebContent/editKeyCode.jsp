@@ -2,7 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="model.Category"%>
-<%@page import="model.Product"%>
+<%@page import="model.Key"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -275,38 +275,45 @@
 					<div class="container">
 						<div class="row">
 
-			
+
 							<div class="col-md-6">
 
 								<div class="modal-dialog">
-    <div class="modal-content">
-    <form action="EditKeyCode" method="get" id="editcode">
-          <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-        <h4 class="modal-title" id="Heading" style="margin-right: 32%;">Thay đổi thông tin</h4>
-      </div>
-          <div class="modal-body">
-            <div class="form-group">
-        <input class="form-control" name="keycode" type="text" value="MJHNHHD-DJJMDJ">
-        </div>
-        <div class="form-group">
-        <select name="status" class="form-control">
-        
-        <option value="0">Chưa đăng bán</option>
-        <option value="1">Đang bán</option>
-        <option value="2">Đã bán</option>
-        
-        </select>
-        </div>
-          
-      </div>
-          <div class="modal-footer ">
-        <button type="button" onclick="document.getElementById('editcode').submit()" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Cập nhật</button>
-      </div>
-      </form>
-        </div>
-    <!-- /.modal-content --> 
-  </div>
+									<div class="modal-content">
+										<form action="AdminUpdateKey" method="get" id="editcode">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-hidden="true">
+													<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+												</button>
+												<h4 class="modal-title" id="Heading"
+													style="margin-right: 32%;">Thay đổi thông tin</h4>
+											</div>
+											<%Key key = (Key)request.getAttribute("key"); %>
+											<div class="modal-body">
+												<div class="form-group">
+												<input class="form-control" name="id" type="hidden"
+														value="<%=key.getId()%>">
+													<input class="form-control" name="keycode" type="text"
+														value="<%=key.getKey_code()%>">
+												</div>
+												<div class="form-group">
+													<input class="form-control" name="status" type="number"
+														value="<%=key.getKey_status()%>" min="0" max="2">
+												</div>
+
+											</div>
+											<div class="modal-footer ">
+												<button type="button"
+													onclick="document.getElementById('editcode').submit()"
+													class="btn btn-warning btn-lg" style="width: 100%;">
+													<span class="glyphicon glyphicon-ok-sign"></span> Cập nhật
+												</button>
+											</div>
+										</form>
+									</div>
+									<!-- /.modal-content -->
+								</div>
 
 
 							</div>
@@ -314,7 +321,7 @@
 					</div>
 					<!-- add -->
 
-					
+
 
 
 					<div class="modal fade" id="delete" tabindex="-1" role="dialog"

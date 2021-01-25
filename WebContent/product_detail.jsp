@@ -221,14 +221,14 @@
                     </div>
                     <div class="box-btn-pay">
                         <div class="row">
+                            
+                                
+                            
                             <div class="col-md-6">
-                                <button type="button" class="btn btn-primary">Mua ngay</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button type="button" class="btn btn-warning"><i class="fa fa-shopping-cart text-left"></i> Thêm giỏ hàng</button>
+                                <a href="AddToCart?id=<%=p.getId() %>"><button type="button" class="btn btn-warning"><i class="fa fa-shopping-cart text-left"></i> Thêm giỏ hàng</button></a>
                             </div>
                         </div>
-                        <span>Quét mã, thanh toán ngay, không cần đăng nhập</span>
+                        
                     </div>
                 </div>
             </div>

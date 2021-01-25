@@ -52,11 +52,11 @@ public class DangNhapController extends HttpServlet {
 					session.setAttribute("USER", user);
 					response.sendRedirect("profile.jsp");
 				}else {
-					response.sendRedirect("adminproduct.jsp");
+					response.sendRedirect("AdminProductController");
 				}
 			}else {
 				request.setAttribute("errorLogin", "Sai Email hoặc mật khẩu");
-				request.getRequestDispatcher("test.jsp").forward(request, response);
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block

@@ -23,7 +23,9 @@
 
   <!-- Custom styles for this template-->
   <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
-
+	<script type="text/javascript"
+    src="<c:url value='ckeditor/ckeditor.js'/>"></script>
+	
 </head>
 
 <body id="page-top">
@@ -69,9 +71,9 @@
         <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             
-            <a class="collapse-item " href="account.html">Account</a>
+            <a class="collapse-item " href="adminUser.jsp">Account</a>
             <a class="collapse-item active" href="AdminProductController">Product</a>
-            <a class="collapse-item" href="order.html">Order</a>
+            <a class="collapse-item" href="adminorder.jsp">Order</a>
           </div>
         </div>
       </li>
@@ -282,7 +284,7 @@
         	<div class="container">
 	<div class="row">
 		
-        <button class="btn btn-success btn-xs" data-title="Add" data-toggle="modal" data-target="#add" >Thêm sản phẩm</button>
+        <a href="addproduct.jsp"><button class="btn btn-success btn-xs" data-title="Add">Thêm sản phẩm</button></a>
         
         <div class="col-md-12">
         <br>
@@ -392,8 +394,8 @@
         
         <input class="form-control " name="price" type="text" placeholder="Nhập giá">
         </div>
-        <div class="form-group">
-        <textarea rows="2" class="form-control" name="des" placeholder="Nhập thông tin"></textarea>
+        <div class="form-group" >
+        <textarea id="content" class="form-control" name="des" placeholder="Nhập thông tin"></textarea>
        
         </div>
         <div class="form-group">
@@ -486,7 +488,12 @@
   <!-- Page level custom scripts -->
   <script src="admin/js/demo/chart-area-demo.js"></script>
   <script src="admin/js/demo/chart-pie-demo.js"></script>
-
+	<!--<script type="text/javascript">
+	var editor = '';
+	$(document).ready(function(){
+		  editor = CKEDITOR.replace('content');
+		});
+	</script>-->
 </body>
 
 </html>

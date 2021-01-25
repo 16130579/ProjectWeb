@@ -147,7 +147,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="img">
-                                <img src="https://hgeqic7azi.vcdn.com.vn/image/catalog/Footer/service1.png" style="max-width:50px;" alt="GIAO HÀNG SIÊU TỐC">
+                                <img src="https://divineshop.vn/image/catalog/Footer/service1.png" style="max-width:50px;" alt="GIAO HÀNG SIÊU TỐC">
                             </div>
                             <div style="margin-left: 20px;">
                                 <span style="font-size:13px;font-weight:bold;text-transform:uppercase;">GIAO HÀNG SIÊU TỐC</span>
@@ -156,7 +156,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="img">
-                                <img src="https://hgeqic7azi.vcdn.com.vn/image/catalog/Footer/service2.png" style="max-width:50px;" alt="BẢO HÀNH NHANH CHÓNG">
+                                <img src="https://divineshop.vn/image/catalog/Footer/service2.png" style="max-width:50px;" alt="BẢO HÀNH NHANH CHÓNG">
                             </div>
                             <div style="margin-left: 20px;">
                                 <span style="font-size:13px;font-weight:bold;text-transform:uppercase;">BẢO HÀNH NHANH CHÓNG</span>
@@ -165,7 +165,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="img">
-                                <img src="https://hgeqic7azi.vcdn.com.vn/image/catalog/Footer/service3.png" style="max-width:50px;" alt="UY TÍN 5 SAO">
+                                <img src="https://divineshop.vn/image/catalog/Footer/service3.png" style="max-width:50px;" alt="UY TÍN 5 SAO">
                             </div>
                             <div style="margin-left: 20px;">
                                 <span style="font-size:13px;font-weight:bold;text-transform:uppercase;">UY TÍN 5 SAO</span>
@@ -174,7 +174,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="img">
-                                <img src="https://hgeqic7azi.vcdn.com.vn/image/catalog/Footer/service4.png" style="max-width:50px;" alt="HỖ TRỢ TẬN TÌNH">
+                                <img src="https://divineshop.vn/image/catalog/Footer/service4.png" style="max-width:50px;" alt="HỖ TRỢ TẬN TÌNH">
                             </div>
                             <div style="margin-left: 20px;">
                                 <span style="font-size:13px;font-weight:bold;text-transform:uppercase;">HỖ TRỢ TẬN TÌNH</span>

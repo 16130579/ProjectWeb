@@ -1,3 +1,6 @@
+<%@page import="dao.ProductDAO"%>
+<%@page import="model.Product"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -8,23 +11,27 @@
     </head>
     <body>
     <%@include file="header.jsp" %>
+    
                 <div class="box-banner margin-box container">
+                
             <div class="box-catagory">
+            
                 <div class="catagory">
                     <i class="fas fa-bars"></i> Danh mục sản phẩm
                 </div>
+                
                 <div class="catagory-item">
                     <ul>
-                        <li><a href="steam.html"><i class="fab fa-steam-symbol"></i> <span>Game trên Stream</span></a> </li>
-                        <li><a href="list.html"><i class="fas fa-trophy"></i> <span>PUGB</span></a> </li>
-                        <li> <a href="battle.html"><i class="fab fa-diaspora"></i> <span>Game trên Origin</span></a> </li>
-                        <li><a href="list.html"><i class="fas fa-wallet"></i> <span>Stream Wallet</span></a> </li>
-                        <li><a href="list.html"><i class="fas fa-mobile-alt"></i> <span>Nạp game mobile</span></a></li>
-                        <li><a href="list.html"><i class="fas fa-broadcast-tower"></i><span>Gói Data Mobile</span></a></li>
-                        <li><a href="list.html"><i class="fab fa-google-play"></i><span>Google Play, iTunes</span></a></li>
-                        <li><a href="list.html"><i class="fas fa-magic"></i><span>Tiện ích</span></a></li>
-                        <li><a href="list.html"><i class="fas fa-wallet"></i><span>Nintendo Eshop Card</span></a></li>
-                        <li><a href="list.html"><i class="fab fa-xbox"></i><span>Xbox Gift Card</span></a></li>
+                        <li><a href="ProductController"><i class="fab fa-steam-symbol"></i> <span>Game trên Stream</span></a> </li>
+                        <li><a href="ProductController"><i class="fas fa-trophy"></i> <span>PUGB</span></a> </li>
+                        <li> <a href="ProductController"><i class="fab fa-diaspora"></i> <span>Game trên Origin</span></a> </li>
+                        <li><a href="ProductController"><i class="fas fa-wallet"></i> <span>Stream Wallet</span></a> </li>
+                        <li><a href="ProductController"><i class="fas fa-mobile-alt"></i> <span>Nạp game mobile</span></a></li>
+                        <li><a href="ProductController"><i class="fas fa-broadcast-tower"></i><span>Gói Data Mobile</span></a></li>
+                        <li><a href="ProductController"><i class="fab fa-google-play"></i><span>Google Play, iTunes</span></a></li>
+                        <li><a href="ProductController"><i class="fas fa-magic"></i><span>Tiện ích</span></a></li>
+                        <li><a href="ProductController"><i class="fas fa-wallet"></i><span>Nintendo Eshop Card</span></a></li>
+                        <li><a href="ProductController"><i class="fab fa-xbox"></i><span>Xbox Gift Card</span></a></li>
                     </ul>   
                 </div>
             </div>
@@ -32,7 +39,7 @@
                 <div class="quick-menu">
                     <ul>
                         <li><a href="ProductController"><i class="fab fa-hotjar"></i> <span>Mua nhiều trong 24h</span></a></li>
-                        <li><a href="list.html"><i class="fas fa-award"></i> <span>NỔI BẬT NHẤT</span></a></li>
+                        <li><a href="ProductController"><i class="fas fa-award"></i> <span>NỔI BẬT NHẤT</span></a></li>
                         <li><a href="payments.html"><i class="far fa-credit-card"></i> <span>Hình thức thanh toán</span></a></li>
                         <li><a href="huongDanMuaHang.html"><i class="far fa-credit-card"></i> <span>Hướng dẫn</span></a></li>
                     </ul>
@@ -108,114 +115,24 @@
                 
             </div>
             <div class="list-product">
+            <% ArrayList<Product> list = ProductDAO.getListProductTop4(); %>
+            <% for(Product p : list){ %>
                 <div class="product">
                     <div class="imgae-product">
                         <a href="detail_product.html">
-                            <img class="check_img_errs img-product-detail" src="img/img-product/product-1.jpg">
+                            <img class="check_img_errs img-product-detail" src="<%=p.getImg() %>">
                         </a>
                     </div>
                     <div class="info-product">
-                        <a href="detail_product.html">Among us</a><br>
-                        69,0000đ<br>
-                        <i class="fas fa-shopping-cart "></i><br>
-                        <button type="button" class="btn btn-blue">Mua ngay</button>
+                        <a href="detail_product.html"><%=p.getName() %></a><br>
+                        <%=p.getPrice() %>đ<br>
+                        <a href="AddToCart?id=<%=p.getId() %>"><i class="fas fa-shopping-cart "></i><br></a>
+                        <a href="AddToCart?id=<%=p.getId() %>"><button type="button" class="btn btn-blue">Mua ngay</button></a>
                     </div>
                 </div>
-                <div class="product">
-                    <div class="imgae-product">
-                        <a href="netflix.html">
-                            <img class="check_img_errs img-product-detail" src="img/img-product/product-2.png">
-                        </a>
-                    </div>
-                    <div class="info-product">
-                        <a href="netflix.html.html">Tài khoản Netflix Premium</a><br>
-                        69,0000đ <span class="sale-price">89,000đ</span> <span class="discount-sale">45%</span> <br>
-                        <i class="fas fa-shopping-cart "></i><br>
-                        <button type="button" class="btn btn-blue">Mua ngay</button>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="imgae-product">
-                        <a href="">
-                            <img class="check_img_errs img-product-detail" src="img/img-product/product-3.png">
-                        </a>
-                    </div>
-                    <div class="info-product">
-                        <a href="">Code gia hạn Adobe Full App</a><br>
-                        1,700,000đ <span class="sale-price">1,600,000đ</span> <span class="discount-sale">-88%</span> <br>
-                        <i class="fas fa-shopping-cart "></i><br>
-                        <button type="button" class="btn btn-red">Mua ngay</button>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="imgae-product">
-                        <a href="">
-                            <img class="check_img_errs img-product-detail" src="img/img-product/product-4.png">
-                        </a>
-                    </div>
-                    <div class="info-product">
-                        <a href="">Discord Nitro 3 Tháng</a><br>
-                        290,000đ <span class="sale-price">380,000đ</span> <span class="discount-sale">-24%</span> <br>
-                        <i class="fas fa-shopping-cart "></i><br>
-                        <button type="button" class="btn btn-blue">Mua ngay</button>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="imgae-product">
-                        <a href="">
-                            <img class="check_img_errs img-product-detail" src="img/img-product/product-5.png">
-                        </a>
-                    </div>
-                    <div class="info-product">
-                        <a href="">Tài khoản Lumosity 1 năm</a><br>
-                        299,000đ <span class="sale-price">1,100,000đ</span> <span class="discount-sale">-73%</span> <br>
-                        <i class="fas fa-shopping-cart "></i><br>
-                        <button type="button" class="btn btn-blue">Mua ngay</button>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="imgae-product">
-                        <a href="">
-                            <img class="check_img_errs img-product-detail" src="img/img-product/product-6.jpeg">
-                        </a>
-                    </div>
-                    <div class="info-product">
-                        <a href="">Tài khoản HMA VPN 1 tháng</a><br>
-                        20,000đ <span class="sale-price">150,000đ</span> <span class="discount-sale">-87%</span> <br>
-                        <i class="fas fa-shopping-cart "></i><br>
-                        <button type="button" class="btn btn-blue">Mua ngay</button>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="imgae-product">
-                        <a href="">
-                            <img class="check_img_errs img-product-detail" src="img/img-product/product-7.png">
-                        </a>
-                    </div>
-                    <div class="info-product">
-                        <a href="">Gói nạp Genshin Impact</a><br>
-                        45,000đ <span class="sale-price">50,000đ</span> <span class="discount-sale">-%</span> <br>
-                        <i class="fas fa-shopping-cart "></i><br>
-                        <button type="button" class="btn btn-blue">Mua ngay</button>
-                    </div>
-                </div>
-                 <div class="product">
-                    <div class="imgae-product">
-                        <a href="">
-                            <img class="check_img_errs img-product-detail" src="img/img-product/product-8.png">
-                        </a>
-                    </div>
-                    <div class="info-product">
-                        <a href="">Tài khoản MyK+ Premium 3 tháng</a><br>
-                        140,000đ <span class="sale-price">405,000đ</span> <span class="discount-sale">-65%</span> <br>
-                        <i class="fas fa-shopping-cart "></i><br>
-                        <button type="button" class="btn btn-blue">Mua ngay</button>
-                    </div>
-                </div>
-            </div>
-            <div class="add-product">
-               <a href="list.html">Tải thêm sản phẩm</a> 
-            </div>
+               <%} %> 
+              </div>
+            
         </div>
         <div class="box-search-price border-top-banner container">
             <h2>Sản phẩm giá tốt</h2>

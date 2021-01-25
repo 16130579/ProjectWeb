@@ -58,7 +58,6 @@ public class KeyDAO {
 	}
 	public static ArrayList<Key> getKeyByProductId(int id) {
 		ArrayList<Key> list = new ArrayList<>();
-		
 		Connection connection;
 		try {
 			connection = DBConnection.getConnection();
@@ -143,20 +142,43 @@ public class KeyDAO {
 		}
 		return false;
 	}
+	public static Key getKeyByKeyId(int id) {
+		Key key = new Key();
+		Connection connection;
+		try {
+			connection = DBConnection.getConnection();
+			String sql = "SELECT * FROM productKey where id = ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, id);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				key.setId(resultSet.getInt("id"));
+				key.setKey_code(resultSet.getNString("key_code"));
+				key.setProduct_id(resultSet.getInt("product_id"));
+				key.setKey_status(resultSet.getInt("key_status"));
+				
+				
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 	
+		return key;
+	}
 	public static void main(String[] args) {
 		Key key = new Key();
 		key.setKey_code("tuan");
-		key.setKey_status(2);
+		key.setKey_status(1);
 //		System.out.println(addKey(key));
 //		System.out.println(updateKey(key,3));
 //		System.out.println(deleteKey(4));
 //		System.out.println(getKeyByProductId(1).toString());
 //		System.out.println(countProductById(1));
-		System.out.println(getKeyByProductIdAmount(1, 3).toString());
-		ArrayList<Key> list = getKeyByProductIdAmount(1, 3);
+//		System.out.println(getKeyByProductIdAmount(1, 3).toString());
+//		ArrayList<Key> list = getKeyByProductIdAmount(1, 3);
 		
-		System.out.println(list.size()<1);
+//		System.out.println(list.size()<1);
+		System.out.println(updateKey(key, 2));
 		
 	}
 }

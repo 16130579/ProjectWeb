@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -39,13 +40,14 @@ public class ThanhToan extends HttpServlet {
 		if (user == null) {
 			Date now = new Date();
 			Timestamp timestamp = new Timestamp(now.getTime());
-			// Lấy tổng giá từ giỏ hàng quá session
+			// Lấy tổng giá từ giỏ hàng qua session
+			
 			Order order = (Order) session.getAttribute("order");
 			order.setCreateAt(timestamp);
 			order.setStatus(1);
 			order.setUser_id(15);
 			int check=OrderDAO.addOrder(order);
-			
+			Map<String, String> redem = new HashMap<>();
 			Map<Integer, Cart> cartShopping = (Map<Integer, Cart>) session.getAttribute("cartShopping");
 			for (Map.Entry<Integer, Cart> item : cartShopping.entrySet()) {
 				int id = item.getKey();
@@ -55,9 +57,10 @@ public class ThanhToan extends HttpServlet {
 				orderItem.setProduct_id(id);
 				ArrayList<Key> Listkey= KeyDAO.getKeyByProductIdAmount(id, cart.getAmount());
 				if (Listkey.size() < cart.getAmount()) {
-					PrintWriter out = response.getWriter();
-					response.setCharacterEncoding("UTF-8");
-					out.print("Sản phẩm " + (ProductDAO.getProductById(id)).getName() + " không còn đủ hàng");
+					String hang = (ProductDAO.getProductById(id)).getName();
+					request.setAttribute("hang", hang);
+					request.getRequestDispatcher("hethang.jsp").forward(request, response);
+					
 				}else {
 				for (Key key : Listkey) {
 					orderItem.setProduct_key(key.getKey_code());
@@ -65,6 +68,7 @@ public class ThanhToan extends HttpServlet {
 					orderItem.setProduct_price((ProductDAO.getProductById(id)).getPrice());
 					orderItem.setAmount(1);
 					boolean checkItem = OrderItemDAO.addOrderItem(orderItem);
+					redem.put(key.getKey_code(),orderItem.getProduct_name());
 					KeyDAO.updateKeyStatus(2, key.getId());
 				}
 				
@@ -76,9 +80,9 @@ public class ThanhToan extends HttpServlet {
 						total += item2.getPrice();
 					}
 					request.setAttribute("tong", total);
-					request.setCharacterEncoding("UTF-8");
-					session.setAttribute("cartShopping", null);
+					request.setAttribute("redem", redem);
 					request.getRequestDispatcher("thanhtoanthanhcong.jsp").forward(request, response);
+					session.setAttribute("cartShopping", null);
 				}
 				
 			}

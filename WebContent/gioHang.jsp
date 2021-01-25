@@ -220,9 +220,9 @@
 						</div>
 						<div class="quantity-block">
 							<span>
-								<button class="bt-truoc">-</button>
-							</span> <input type="tel" value="${entry.value.getAmount()}"> <span>
-								<button class="bt-sau">+</button>
+								<a href="Minus?id=${entry.key}"><button class="bt-truoc">-</button></a>
+							</span> <input type="tel" min="0" value="${entry.value.getAmount()}"> <span>
+								<a href="Plus?id=${entry.key}"><button class="bt-sau">+</button></a>
 							</span>
 						</div>
 					</div>

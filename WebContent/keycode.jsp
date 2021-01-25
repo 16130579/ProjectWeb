@@ -305,7 +305,7 @@
    <td>${item.getId()}</td>
     <td>${item.getKey_code()}</td>
     <td>${item.getKey_status()}</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><i class="fas fa-pencil-alt"></i></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditKeyCode?id=${item.getId()}"><button class="btn btn-primary btn-xs" data-title="Edit"><i class="fas fa-pencil-alt"></i></button></a></p></td>
     <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete${item.getId()}" ><i class="fas fa-trash"></i></button></p></td>
     </tr>
     <div class="modal fade" id="delete${item.getId()}" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">

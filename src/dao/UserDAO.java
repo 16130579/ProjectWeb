@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -18,6 +19,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import controller.DBConnection;
+import model.Category;
+import model.Role;
 import model.User;
 
 
@@ -40,6 +43,55 @@ public class UserDAO {
 			return false;
 			
 		}
+		// list role
+		public static ArrayList<Role> getListRole(){
+			ArrayList<Role> list = new ArrayList<>();
+			Connection connection;
+			try {
+				connection = DBConnection.getConnection();
+				String sql = "SELECT * FROM [role]";
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				while (resultSet.next()) {
+					Role u = new Role();
+					u.setId(resultSet.getInt("id"));
+					u.setName(resultSet.getNString("name"));
+					list.add(u);
+				}
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+			return list;
+		}
+		
+		//list user
+		public static ArrayList<User> getListUser(){
+			ArrayList<User> list = new ArrayList<>();
+			Connection connection;
+			try {
+				connection = DBConnection.getConnection();
+				String sql = "SELECT * FROM [users]";
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				while (resultSet.next()) {
+					User u = new User();
+					u.setId(resultSet.getInt("user_id"));
+					u.setFirstName(resultSet.getNString("first_name"));
+					u.setLastName(resultSet.getNString("last_name"));
+					u.setEmail(resultSet.getNString("email"));
+					u.setPhone(resultSet.getInt("phone"));
+					u.setCmnd(resultSet.getInt("cmnd"));
+					u.setRole(resultSet.getInt("role_id"));
+					u.setBalance(resultSet.getInt("balance"));
+					u.setPassword(resultSet.getNString("password"));
+					list.add(u);
+				}
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+			return list;
+		}
+		
 	// kiểm tra user đã tồn tại chưa
 		public static boolean checkUser(String email) {
 			Connection connection;
@@ -206,14 +258,29 @@ public class UserDAO {
 			Connection connection;
 			try {
 				connection = DBConnection.getConnection();
-				String sql = "UPDATE [users] SET first_name = ?, last_name = ?, email = ?, phone = ?, cmnd = ? WHERE user_id = ?";
+				String sql = "UPDATE [users] SET first_name = ?, last_name = ?, email = ?, phone = ?, cmnd = ?, role_id = ? WHERE user_id = ?";
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
 				preparedStatement.setNString(1, user.getFirstName());
 				preparedStatement.setNString(2, user.getLastName());
 				preparedStatement.setNString(3, user.getEmail());
 				preparedStatement.setInt(4, user.getPhone());
 				preparedStatement.setInt(5, user.getCmnd());
-				preparedStatement.setInt(6, idUser);
+				preparedStatement.setInt(6, user.getRole());
+				preparedStatement.setInt(7, idUser);
+				int rowAffect = preparedStatement.executeUpdate();
+				if (rowAffect == 1) return true;
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+			return false;
+		}
+		public static boolean deleteUser(int id) {
+			Connection connection;
+			try {
+				connection = DBConnection.getConnection();
+				String sql = "DELETE FROM [users] where user_id = ?";
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setInt(1, id);
 				int rowAffect = preparedStatement.executeUpdate();
 				if (rowAffect == 1) return true;
 			} catch (ClassNotFoundException | SQLException e) {
@@ -230,6 +297,12 @@ public class UserDAO {
 //			System.out.println(napTien(13, 100000));
 //			System.out.println(sendMail("16130579@st.hcmuaf.edu.vn", "New", "Success"));
 //			System.out.println(changePassword("thanh@gmail.com", "thanh98thehepro"));
-			System.out.println(checkPass("thanh98thehepro", "thanh@gmail.com"));
+//			System.out.println(checkPass("thanh98thehepro", "thanh@gmail.com"));
+//			ArrayList<User> list = getListUser();
+//			for (User user : list) {
+//				System.out.println(user.toString());
+//			}
+			User u = new User(13, "tuan", "thanh", "thanh@gmail.com", 384203910 , 1, "", 2, 100000, "");
+			System.out.println(updateUser(13, u));
 		}
 }

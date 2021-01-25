@@ -377,7 +377,15 @@ var check = function() {
 				</div>
 				<%
 		User user = (User) session.getAttribute("USER");
+				int sum = 0;
 		Map<Integer, Cart> cartShopping = (Map<Integer, Cart>) session.getAttribute("cartShopping");
+		if(cartShopping == null){
+			sum = 0;
+		}else{
+			for (Cart item : cartShopping.values()) {
+				sum += item.getAmount();
+			}
+		}
 		int idUser = 0;
 		if (user != null) {
 			idUser = user.getId();
@@ -386,6 +394,7 @@ var check = function() {
 				<%
 				if (user == null) {
 			%>
+			
 				<div class="box-log-in">
 					<div class="dropdown">
 						<button class="dropbtn">
@@ -664,7 +673,7 @@ var check = function() {
 						<div class="box-item-cart-contain">
 							<i class="fas fa-shopping-cart"></i> Giỏ hàng <span
 								class="numberItem">
-								${sum}
+								<%=sum %>
 								</span>
 						</div>
 					</div> </a>

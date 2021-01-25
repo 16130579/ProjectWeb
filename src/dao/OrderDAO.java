@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import controller.DBConnection;
+import model.Category;
 import model.Order;
 import model.OrderItem;
 import model.Product;
@@ -58,6 +59,28 @@ public class OrderDAO {
 		
 		return id;
 	}
+	public static ArrayList<Order> getListOrderById(int id){
+		ArrayList<Order> list = new ArrayList<>();
+		Connection connection;
+		try {
+			connection = DBConnection.getConnection();
+			String sql = "SELECT * FROM [orders] where user_id = ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, id);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				Order order = new Order();
+				order.setId(resultSet.getInt("order_id"));
+				order.setCreateAt(resultSet.getTimestamp("createAt"));
+				order.setPrice(resultSet.getInt("price"));
+				list.add(order);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	public static boolean deleteOrder(int id) {
 		Connection connection;
 		try {
@@ -72,6 +95,28 @@ public class OrderDAO {
 		}
 		return false;
 	}
+	public static ArrayList<Order> getListOrder(){
+		ArrayList<Order> list = new ArrayList<>();
+		Connection connection;
+		try {
+			connection = DBConnection.getConnection();
+			String sql = "SELECT * FROM [orders]";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				Order order = new Order();
+				order.setId(resultSet.getInt("order_id"));
+				order.setUser_id(resultSet.getInt("user_id"));
+				order.setCreateAt(resultSet.getTimestamp("createAt"));
+				order.setStatus(resultSet.getInt("status"));
+				order.setPrice(resultSet.getInt("price"));
+				list.add(order);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	public static void main(String[] args) {
 		Date now = new Date();
 		Timestamp timestamp = new Timestamp(now.getTime());
@@ -80,6 +125,11 @@ public class OrderDAO {
 //		System.out.println(deleteOrder(2));
 //		Order o2 = new Order(1, timestamp, 100000, 1, 13);
 //		System.out.println(getIdOrder(o2));
+//		ArrayList<Order> list = getListOrder();
+//		for (Order order : list) {
+//			System.out.println(order.toString());
+//		}
+		System.out.println(deleteOrder(6));
 	}
 	
 }

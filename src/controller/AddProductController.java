@@ -37,12 +37,14 @@ public class AddProductController extends HttpServlet {
 	        String name = request.getParameter("name");
 	        int price = Integer.parseInt(request.getParameter("price"));
 	        String des = request.getParameter("des");
+	        int category = Integer.parseInt(request.getParameter("category"));
 	        request.getParameter("des");
 	        Product product = new Product();
 	        product.setName(name);
 	        product.setPrice(price);
 	        product.setDes(des);
 	        product.setImg("img/img-product/"+fileName);
+	        product.setCategory_id(category);
 	        boolean add = ProductDAO.addProduct(product);
 	        if (suc==true && add == true) {
 	        	response.sendRedirect("http://localhost:8080/Web-2020/AdminProductController");

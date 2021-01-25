@@ -35,6 +35,7 @@ public class UpdateUserController extends HttpServlet {
 		user.setBalance(balance);
 		user.setPhone(Integer.parseInt(phone));
 		user.setCmnd(Integer.parseInt(cmnd));
+		user.setRole(1);
 		boolean check = UserDAO.updateUser(user.getId(), user);
 		if (check) {
 			request.setAttribute("error", "Cập nhật thành công");
