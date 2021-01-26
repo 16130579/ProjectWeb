@@ -75,8 +75,8 @@
           <div class="bg-white py-2 collapse-inner rounded">
             
             <a class="collapse-item " href="adminUser.jsp">Account</a>
-            <a class="collapse-item active" href="AdminProductController">Product</a>
-            <a class="collapse-item" href="adminorder.jsp">Order</a>
+            <a class="collapse-item " href="AdminProductController">Product</a>
+            <a class="collapse-item active" href="adminorder.jsp">Order</a>
           </div>
         </div>
       </li>
@@ -325,7 +325,7 @@
     <%}else{ %>
     <td>Chờ xét duyệt</td>
     <%} %>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><i class="fas fa-pencil-alt"></i></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditOrder?id=<%=o.getId() %>"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal"  ><i class="fas fa-pencil-alt"></i></button></a></p></td>
     <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete<%=o.getId() %>" ><i class="fas fa-trash"></i></button></p></td>
     </tr>
     <div class="modal fade" id="delete<%=o.getId() %>" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
@@ -357,16 +357,7 @@
 </table>
 
 
-<div class="clearfix"></div>
-<ul class="pagination pull-right">
-  <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-  <li class="active"><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-</ul>
+
                 
             </div>
             

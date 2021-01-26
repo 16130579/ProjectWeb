@@ -14,6 +14,7 @@ import model.Category;
 import model.Order;
 import model.OrderItem;
 import model.Product;
+import model.User;
 
 public class OrderDAO {
 	public static int addOrder(Order order) {
@@ -80,6 +81,28 @@ public class OrderDAO {
 		}
 		return list;
 	}
+	public static Order getOrderById(int id){
+		Order order = new Order();
+		Connection connection;
+		try {
+			connection = DBConnection.getConnection();
+			String sql = "SELECT * FROM [orders] where order_id = ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, id);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				order.setStatus(resultSet.getInt("status"));
+				order.setId(resultSet.getInt("order_id"));
+				order.setCreateAt(resultSet.getTimestamp("createAt"));
+				order.setPrice(resultSet.getInt("price"));
+				order.setUser_id(resultSet.getInt("user_id"));
+				
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return order;
+	}
 	
 	public static boolean deleteOrder(int id) {
 		Connection connection;
@@ -117,6 +140,23 @@ public class OrderDAO {
 		}
 		return list;
 	}
+	//update user
+			public static boolean updateOder(int id, Order o) {
+				Connection connection;
+				try {
+					connection = DBConnection.getConnection();
+					String sql = "UPDATE [orders] SET  price = ?, status = ? WHERE order_id = ?";
+					PreparedStatement preparedStatement = connection.prepareStatement(sql);
+					preparedStatement.setInt(1, o.getPrice());
+					preparedStatement.setInt(2, o.getStatus());
+					preparedStatement.setInt(3, id);
+					int rowAffect = preparedStatement.executeUpdate();
+					if (rowAffect == 1) return true;
+				} catch (ClassNotFoundException | SQLException e) {
+					e.printStackTrace();
+				}
+				return false;
+			}
 	public static void main(String[] args) {
 		Date now = new Date();
 		Timestamp timestamp = new Timestamp(now.getTime());
@@ -129,7 +169,8 @@ public class OrderDAO {
 //		for (Order order : list) {
 //			System.out.println(order.toString());
 //		}
-		System.out.println(deleteOrder(6));
+//		System.out.println(deleteOrder(6));
+		System.out.println(getOrderById(1039).toString());
 	}
 	
 }

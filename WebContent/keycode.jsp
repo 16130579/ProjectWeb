@@ -66,9 +66,9 @@
         <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             
-            <a class="collapse-item " href="account.html">Account</a>
+            <a class="collapse-item " href="adminUser.jsp">Account</a>
             <a class="collapse-item active" href="AdminProductController">Product</a>
-            <a class="collapse-item" href="order.html">Order</a>
+            <a class="collapse-item" href="adminorder.jsp">Order</a>
           </div>
         </div>
       </li>

@@ -68,9 +68,9 @@
 					aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 
-						<a class="collapse-item " href="account.html">Account</a> <a
-							class="collapse-item active" href="product.html">Product</a> <a
-							class="collapse-item" href="order.html">Order</a>
+						<a class="collapse-item " href="adminUser.jsp">Account</a> <a
+							class="collapse-item active" href="AdminProductController">Product</a> <a
+							class="collapse-item" href="adminorder.jsp">Order</a>
 					</div>
 				</div></li>
 
@@ -126,8 +126,9 @@
 											</div>
 											<div class="form-group">
 
-												<input class="form-control " type="text"
-													value="<%= p.getStatus() %>" name="status">
+												<input class="form-control " type="number"
+													value="<%= p.getStatus() %>" name="status" min="0" max="2">
+													<p style="margin: 3px"> Lưu ý ( 0 : Chưa đăng bán , 1 : Đang đăng bán , 2 : Đã bán)</p>
 											</div>
 											
 											<div class="form-group">

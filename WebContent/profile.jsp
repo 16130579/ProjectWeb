@@ -65,10 +65,11 @@
 							<div class="col-lg-4" >
 						<label>Email đăng nhập :</label>
 						
-						
-						<label>Họ vào tên :</label>
-						
-					
+						<br>
+						<label>Họ :</label>
+						<br>
+						<label>Tên :</label>
+					<br>
 						<label>Số điện thoại :</label>
 						
 						

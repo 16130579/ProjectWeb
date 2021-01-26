@@ -219,7 +219,7 @@
 			<div class="row">
 			<% ArrayList<Product> arr = ProductDAO.getListProduct(); 
 			int start = 0,end = 8;
-			if(arr.size()<9){
+			if(arr.size()<8){
 				end = arr.size();
 			}
 			if(request.getParameter("start")!=null){
@@ -252,13 +252,13 @@
 			<ul class="pagination">
 			<%
 			int a, b;
-			int limit = arr.size() / 9;
-			if(limit*9<arr.size()){
+			int limit = arr.size() / 8;
+			if(limit*8<arr.size()){
 				limit += 1;
 			}
 			for (int i = 1 ; i <= limit; i++){
-				a = (i-1)*9;
-				b = i*9;
+				a = (i-1)*8;
+				b = i*8;
 				if(b > arr.size()){
 					b = arr.size();
 				}

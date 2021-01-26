@@ -298,8 +298,11 @@
 														value="<%=key.getKey_code()%>">
 												</div>
 												<div class="form-group">
+												
+													
 													<input class="form-control" name="status" type="number"
 														value="<%=key.getKey_status()%>" min="0" max="2">
+														<p style="margin: 3px"> Lưu ý ( 0 : Chưa đăng bán , 1 : Đang đăng bán , 2 : Đã bán)</p>
 												</div>
 
 											</div>

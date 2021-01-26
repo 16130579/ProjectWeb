@@ -1,10 +1,13 @@
-<%@page import="dao.UserDAO"%>
-<%@page import="model.User"%>
+<%@page import="model.Order"%>
+<%@page import="dao.ProductDAO"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="model.Category"%>
+<%@page import="model.Key"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,19 +15,22 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
-<title>Danh sách</title>
-
+<title>Admin</title>
 <!-- Custom fonts for this template-->
 <link href="admin/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
-
 <!-- Custom styles for this template-->
 <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
-
+<style type="text/css">
+.pagination li {
+	border: 0.1px solid black;
+	padding: 5px;
+	border-left: 0px;
+}
+</style>
 </head>
 <body id="page-top">
 	<!-- Page Wrapper -->
@@ -36,13 +42,11 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="index.html">
+				href="AdminProductController">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
 				</div>
-				<div class="sidebar-brand-text mx-3">
-					Admin <sup>2</sup>
-				</div>
+				<div class="sidebar-brand-text mx-3">Admin</div>
 			</a>
 			<!-- Divider -->
 			<hr class="sidebar-divider my-0">
@@ -64,9 +68,9 @@
 					aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 
-						<a class="collapse-item active" href="adminUser.jsp">Account</a>
-            <a class="collapse-item " href="AdminProductController">Product</a>
-            <a class="collapse-item" href="adminorder.jsp">Order</a>
+						<a class="collapse-item " href="account.html">Account</a> <a
+							class="collapse-item active" href="product.html">Product</a> <a
+							class="collapse-item" href="order.html">Order</a>
 					</div>
 				</div></li>
 
@@ -241,7 +245,8 @@
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> <span
-								class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span> <img class="img-profile rounded-circle"
+								class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie
+									Luna</span> <img class="img-profile rounded-circle"
 								src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
 						</a> <!-- Dropdown - User Information -->
 							<div
@@ -272,123 +277,68 @@
 						<div class="row">
 
 
-							<div class="col-md-12">
-								<h4>Quản lý tài khoản</h4>
-								<div class="table-responsive">
+							<div class="col-md-6">
 
-									<table id="mytable" class="table table-bordred table-striped">
-
-										<thead>
-
-
-											<th>First_Name</th>
-											<th>Last_Name</th>
-											<th>CMND</th>
-											<th>Email</th>
-											<th>Balance</th>
-											<th>Phone</th>
-											<th>Role</th>
-											<th>Edit</th>
-
-											<th>Delete</th>
-										</thead>
-										<tbody>
-											<% ArrayList<User> list = UserDAO.getListUser(); %>
-											<tr>
-												<% for(User user : list){ %>
-												<td><%=user.getFirstName() %></td>
-												<td><%=user.getLastName() %></td>
-												<td><%=user.getCmnd() %></td>
-												<td><%=user.getEmail() %></td>
-												<td><%=user.getBalance() %> đ</td>
-												<td><%=user.getPhone() %></td>
-												<% if(user.getRole()==1){ %>
-												<td>User</td>
-												<%}else{ %>
-												<td>Admin</td>
-												<%} %>
-												<td><p data-placement="top" data-toggle="tooltip"
-														title="Edit">
-														<a href="EditUser?id=<%=user.getId()%>"><button class="btn btn-primary btn-xs" data-title="Edit"
-															data-toggle="modal">
-															<i class="fas fa-pencil-alt"></i>
-														</button></a>
-													</p></td>
-												<td><p data-placement="top" data-toggle="tooltip"
-														title="Delete">
-														<button class="btn btn-danger btn-xs" data-title="Delete"
-															data-toggle="modal"
-															data-target="#delete<%=user.getId()%>">
-															<i class="fas fa-trash"></i>
-														</button>
-													</p></td>
-												<div class="modal fade" id="delete<%=user.getId()%>"
-													tabindex="-1" role="dialog" aria-labelledby="edit"
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<form action="AdminUpdateOrder" method="get" id="editcode">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
 													aria-hidden="true">
-													<div class="modal-dialog">
-														<div class="modal-content">
-															<div class="modal-header">
-																<button type="button" class="close" data-dismiss="modal"
-																	aria-hidden="true">
-																	<span class="glyphicon glyphicon-remove"
-																		aria-hidden="true"></span>
-																</button>
-																<h4 class="modal-title custom_align" id="Heading">Delete
-																	this entry</h4>
-															</div>
-															<div class="modal-body">
-
-																<div class="alert alert-danger">
-																	<span class="glyphicon glyphicon-warning-sign"></span>
-																	Are you sure you want to delete this Record?
-																</div>
-
-															</div>
-															<div class="modal-footer ">
-																<a href="DeleteUser?id=<%=user.getId()%>"><button
-																		type="button" class="btn btn-success">
-																		<span class="glyphicon glyphicon-ok-sign"></span> Yes
-																	</button></a>
-																<button type="button" class="btn btn-default"
-																	data-dismiss="modal">
-																	<span class="glyphicon glyphicon-remove"></span> No
-																</button>
-															</div>
-														</div>
-														<!-- /.modal-content -->
-													</div>
-													<!-- /.modal-dialog -->
+													<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+												</button>
+												<h4 class="modal-title" id="Heading"
+													style="margin-right: 32%;">Thay đổi thông tin</h4>
+											</div>
+											<%Order key = (Order)request.getAttribute("order"); %>
+											<div class="modal-body">
+											<div class="form-group">
+												
+													<input class="form-control" name="at" disabled="disabled" type="text"
+														value="<%=key.getCreateAt()%>">
+												</div>
+												<div class="form-group">
+												
+													<input class="form-control" name="user" disabled="disabled" type="number"
+														value="<%=key.getUser_id()%>">
+												</div>
+												<div class="form-group">
+												<input class="form-control" name="id" type="hidden"
+														value="<%=key.getId()%>">
+													<input class="form-control" name="price" type="number"
+														value="<%=key.getPrice()%>">
+												</div>
+												<div class="form-group">
+												
+													
+													<input class="form-control" name="status" type="number"
+														value="<%=key.getStatus()%>" min="0" max="2">
+														<p style="margin: 3px"> Lưu ý ( 0 : Chờ xét duyệt , 1 : Hoàn tất , 2 : Chưa hoàn tất)</p>
 												</div>
 
-											</tr>
-											<%} %>
-
-
-
-
-
-										</tbody>
-
-									</table>
-									<div class="clearfix"></div>
-									<ul class="pagination pull-right">
-										<li class="disabled"><a href="#"><span
-												class="glyphicon glyphicon-chevron-left"></span></a></li>
-										<li class="active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#"><span
-												class="glyphicon glyphicon-chevron-right"></span></a></li>
-									</ul>
-
+											</div>
+											<div class="modal-footer ">
+												<button type="button"
+													onclick="document.getElementById('editcode').submit()"
+													class="btn btn-warning btn-lg" style="width: 100%;">
+													<span class="glyphicon glyphicon-ok-sign"></span> Cập nhật
+												</button>
+											</div>
+										</form>
+									</div>
+									<!-- /.modal-content -->
 								</div>
+
 
 							</div>
 						</div>
 					</div>
-					<div class="modal fade" id="edit" tabindex="-1" role="dialog"
+					<!-- add -->
+
+
+
+
+					<div class="modal fade" id="delete" tabindex="-1" role="dialog"
 						aria-labelledby="edit" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
@@ -398,42 +348,23 @@
 										<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 									</button>
 									<h4 class="modal-title custom_align" id="Heading"
-										style="margin-right: 33%;">Edit Your Detail</h4>
+										style="margin-right: 32%;">Xóa sản phẩm này</h4>
 								</div>
 								<div class="modal-body">
-									<div class="form-group">
-										<input class="form-control " type="text" placeholder="Tuấn">
-									</div>
-									<div class="form-group">
-										<input class="form-control " type="text" placeholder="Thành">
-									</div>
-									<div class="form-group">
 
-										<input class="form-control " type="text"
-											placeholder="251131358">
+									<div class="alert alert-danger">
+										<span class="glyphicon glyphicon-warning-sign"></span> Bạn có
+										chắc chắn muốn xóa
 									</div>
-									<div class="form-group">
-										<input class="form-control" placeholder="tuanthanh@gmail.com"></input>
-									</div>
-									<div class="form-group">
-										<input class="form-control" placeholder="tuanthanh123"></input>
-									</div>
-									<div class="form-group">
-										<input class="form-control" placeholder="+923335586757"></input>
-									</div>
-									<div class="form-group">
-										<select name="" id="" class="form-control">
-											<option value="">Admin</option>
-											<option value="" selected>User</option>
-											<option value="">Vip</option>
 
-										</select>
-									</div>
 								</div>
 								<div class="modal-footer ">
-									<button type="button" class="btn btn-warning btn-lg"
-										style="width: 100%;">
-										<span class="glyphicon glyphicon-ok-sign"></span> Update
+									<button type="button" class="btn btn-success">
+										<span class="glyphicon glyphicon-ok-sign"></span> Có
+									</button>
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">
+										<span class="glyphicon glyphicon-remove"></span> Không
 									</button>
 								</div>
 							</div>
@@ -441,10 +372,6 @@
 						</div>
 						<!-- /.modal-dialog -->
 					</div>
-
-
-
-
 				</div>
 				<!-- endmain -->
 			</div>
@@ -483,7 +410,7 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="index.jsp">Logout</a>
+					<a class="btn btn-primary" href="login.html">Logout</a>
 				</div>
 			</div>
 		</div>
@@ -504,5 +431,6 @@
 	<!-- Page level custom scripts -->
 	<script src="admin/js/demo/chart-area-demo.js"></script>
 	<script src="admin/js/demo/chart-pie-demo.js"></script>
+
 </body>
 </html>

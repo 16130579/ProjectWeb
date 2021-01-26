@@ -32,9 +32,11 @@ public class CapNhatMatKhau extends HttpServlet {
 		try {
 			boolean check = UserDAO.changePassword(email, newPassword);
 			if (check) {
-				
+				session.setAttribute("forget", null);
+				request.setCharacterEncoding("utf-8");
 				print.println("Cập nhật mật khẩu mới thành công");
 			}else {
+				request.setCharacterEncoding("utf-8");
 				print.println("Cập nhật mật khẩu mới thất bại");
 			}
 		} catch (NoSuchAlgorithmException e) {

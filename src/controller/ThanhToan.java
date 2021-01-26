@@ -133,6 +133,7 @@ public class ThanhToan extends HttpServlet {
 						total += item2.getPrice();
 					}
 					request.setAttribute("tong", total);
+					request.setAttribute("redem", redem);
 					request.setCharacterEncoding("UTF-8");
 					session.setAttribute("cartShopping", null);
 					request.getRequestDispatcher("thanhtoanthanhcong.jsp").forward(request, response);

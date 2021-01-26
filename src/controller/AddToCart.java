@@ -53,7 +53,9 @@ public class AddToCart extends HttpServlet {
 				if (need > 0) {
 					need = 0;
 				}
-				double vnd = total / 22000;
+				Double d = new Double(total);
+				double vnd = d / 22000;
+				vnd=(double) Math.round(vnd * 100) / 100;
 				request.setAttribute("thanhtoan", vnd);
 				User check = new User();
 				check.setBalance(need);
@@ -91,7 +93,9 @@ public class AddToCart extends HttpServlet {
 					if (need > 0) {
 						need = 0;
 					}
-					double vnd = total / 22000;
+					Double d = new Double(total);
+					double vnd = d / 22000;
+					vnd=(double) Math.round(vnd * 100) / 100;
 					request.setAttribute("thanhtoan", vnd);
 					User check = new User();
 					check.setBalance(need);
@@ -118,7 +122,9 @@ public class AddToCart extends HttpServlet {
 					if (need > 0) {
 						need = 0;
 					}
-					double vnd = total / 22000;
+					Double d = new Double(total);
+					double vnd = d / 22000;
+					vnd=(double) Math.round(vnd * 100) / 100;
 					request.setAttribute("thanhtoan", vnd);
 					User check = new User();
 					check.setBalance(need);
@@ -155,7 +161,9 @@ public class AddToCart extends HttpServlet {
 				}
 //				int need = user.getBalance();
 //				request.setAttribute("needed", need);
-				double vnd = total / 22000;
+				Double d = new Double(total);
+				double vnd = d / 22000;
+				vnd=(double) Math.round(vnd * 100) / 100;
 				request.setAttribute("thanhtoan", vnd);
 				session.setAttribute("cartShopping", cartShopping);
 
@@ -187,7 +195,9 @@ public class AddToCart extends HttpServlet {
 						total += item.getPrice();
 						sum += item.getAmount();
 					}
-					double vnd = total / 22000;
+					Double d = new Double(total);
+					double vnd = d / 22000;
+					vnd=(double) Math.round(vnd * 100) / 100;
 					request.setAttribute("thanhtoan", vnd);
 					Order order = new Order();
 					order.setPrice(total);
@@ -208,7 +218,9 @@ public class AddToCart extends HttpServlet {
 						total += item.getPrice();
 						sum += item.getAmount();
 					}
-					double vnd = total / 22000;
+					Double d = new Double(total);
+					double vnd = d / 22000;
+					vnd=(double) Math.round(vnd * 100) / 100;
 					request.setAttribute("thanhtoan", vnd);
 //					int need = user.getBalance();
 //					request.setAttribute("needed", need);

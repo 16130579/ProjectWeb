@@ -261,14 +261,14 @@
 						</div>
 						
 					</div>
-					<a href="cash.html"><div class="nap-many">
+					<a href="cash.jsp"><div class="nap-many">
 						<button>Nạp thêm tiền</button>
 					</div></a>
 				</div>
 			</div>
 			<div class="bottomm">
 				<div class="mua-tiep">
-					<a href="ProductController"><button>Tiếp tục mua hàng</button></a>
+					<a href="ProductController"><button class="btn btn-danger">Tiếp tục mua hàng</button></a>
 				</div>
 				<div class="mua">
 				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
@@ -294,12 +294,14 @@
             <% User needed = (User)session.getAttribute("check"); %>
             <% int money=needed.getBalance(); %>
             <% if (user != null && money == 0){ %>
-            <button>Thanh toán</button>
+            <button class="btn btn-info">Thanh toán trực tiếp</button>
+             <a class="btn btn-success" href="ThanhToanSoDu">Thanh toán bằng số dư</a>
+            
             
              <%}else if(money<0){ %>
              <h5>Bạn không đủ tiền trong tài khoản</h5>
              <%}else if(money == 0){ %>
-             <button>Thanh toán</button>
+             <button class="btn btn-info">Thanh toán</button>
              <%} %>
 	</form>
 					

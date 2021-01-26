@@ -45,12 +45,24 @@ public class Plus extends HttpServlet {
 			total += item.getPrice();
 			sum += item.getAmount();
 		}
-		double vnd = total / 22000;
+		
+		User user = (User) session.getAttribute("USER");
+		if (user != null) {
+			int balance = user.getBalance();
+			int need = balance - total;
+			if (need > 0) {
+				need = 0;
+			}
+			User check = new User();
+			check.setBalance(need);
+			session.setAttribute("check", check);
+			request.setAttribute("needed", need);
+		}
+		Double d = new Double(total);
+		double vnd = d / 22000;
+		vnd=(double) Math.round(vnd * 100) / 100;
 		request.setAttribute("thanhtoan", vnd);
-		User check = new User();
-//		check.setBalance(need);
-//		session.setAttribute("check", check);
-//		request.setAttribute("needed", need);
+		
 		Order order = new Order();
 		order.setPrice(total);
 		session.setAttribute("order", order);
